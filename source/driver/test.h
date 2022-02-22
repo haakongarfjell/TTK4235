@@ -13,24 +13,30 @@ typedef struct {
 
 Level level;
 
-// Matrise med button directions lagt inn.
-int queue[4] = [0,-1.,-1,-1];
+// Matrise med button directions lagt inn. Lag queue av ButtonFloor typen.
+int queue[4] = [0,1, 1,-1];
 // Hvis hele queuen er -1, stå stille. Hvis ikke kjør vanlig queuehandler.
 
+void leftShiftQueue(Button* queue);
 
-void queueHandler(int* queue[4]) {  // Bedre navn
-    for (int i = 0; i < 3; i++) {
-        (*queue)[i] = (*queue)[i+1];
-        queue[3] = -1;
-    }
-}
+void passByFloor(); // Sjekk om en etasje i mellom har requested i riktig retning.
+
+void removeDuplicateNeighbourFloors(); // Fjern like etasjer ved siden av hverandre i køen.
+
+bool checkStop(); // Sjekk om stopknappen er trykket.
+// if (checkStop()) continue; Køen slettes
+    void resetQueue();
+
+
+
 
 void addToQueue(int floor) {
     // if (floor > 4 || floor < 0) return;
-    queue[4] = floor;   // size-1
+    queue[3] = floor;   // size-1
 }
 
 while(1) {
+
     if (level.nextLevel == elevio_floorSensor()) {
         elevio_motorDirection(DIRN_STOP);
         doorWait();
@@ -54,4 +60,37 @@ while(1) {
     }
 
     // Må passe på at at vi ikke betjener bestillinger utenfra, når motsatt retning
+}
+
+typedef struct {
+    ButtonType button;
+    int floor;
+} ButtonFloor;
+
+// Lage queue av ButtonFloor
+ButtonFloor buttonCheck() {
+
+for(int f = 0; f < N_FLOORS; f++){
+    for(int b = 0; b < N_BUTTONS; b++){
+        int btnPressed = elevio_callButton(f, b);
+        if (btnPressed == 1) {
+            ButtonFloor tempButton;
+            tempButton.button = b;
+            tempButton.floor = f;
+            return tempButton;
+        }
+        elevio_buttonLamp(f, b, btnPressed);
+        }
+    }
+
+}
+
+for(int f = 0; f < N_FLOORS; f++){
+    for(int b = 0; b < N_BUTTONS; b++){
+        int btnPressed = elevio_callButton(f, b);
+        printf("knapp: %d \n",btnPressed);
+        elevio_buttonLamp(f, b, btnPressed);
+        }
+    }
+
 }

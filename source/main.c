@@ -6,7 +6,7 @@
 
 #include "driver/door.h"
 
-
+// Haakon sin token: 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
 
 int main(){
 
@@ -15,6 +15,8 @@ int main(){
     elevio_motorDirection(DIRN_DOWN);
 
     elevio_doorOpenLamp(0);
+
+    // Her er en endring
 
 
     while(1){

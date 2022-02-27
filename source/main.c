@@ -31,7 +31,15 @@ int main(){
     b4.buttonType = BUTTON_CAB;
     b4.floor = 7;
 
-    Request queue[g_queue_size] = {b1,b2,b3,b4};
+    Request queue[g_queue_size];
+    addToQueue(&queue, b1, g_queue_size);
+    leftShiftQueue(&queue, g_queue_size);
+    addToQueue(&queue, b2, g_queue_size);
+    leftShiftQueue(&queue, g_queue_size);
+    addToQueue(&queue, b3, g_queue_size);
+    leftShiftQueue(&queue, g_queue_size);
+    addToQueue(&queue, b4, g_queue_size);
+
     printf("b1: %d \n", queue[0].floor);
     printf("b2: %d \n", queue[1].floor);
     printf("b3: %d \n", queue[2].floor);
@@ -49,15 +57,23 @@ int main(){
     printf("b3: %d \n", queue[2].floor);
     printf("b4: %d \n", queue[3].floor);
     printf("%d \n");
+    printf("Queuecheck : %d \n", checkNoRequests(&queue, g_queue_size));
+    printf("%d \n");
     resetQueue(&queue, g_queue_size);
     printf("b1: %d \n", queue[0].floor);
     printf("b2: %d \n", queue[1].floor);
     printf("b3: %d \n", queue[2].floor);
     printf("b4: %d \n", queue[3].floor);
-    
+    printf("%d \n");
+    printf("Queuecheck : %d \n", checkNoRequests(&queue, g_queue_size));
     while(1){
         int floor = elevio_floorSensor();
         //printf("floor: %d \n",floor);
+
+  
+        
+
+     
 
         if(floor == 0){
             elevio_motorDirection(DIRN_UP);

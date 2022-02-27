@@ -40,3 +40,15 @@ void resetQueue(Request* queue_ptr, int size) {
         queue_ptr++;
     }
 }
+
+bool checkNoRequests(Request* queue_ptr, int size) {
+    //int counter = 0;
+    for (int i = 0; i < size; i++) {
+        Request req = (*queue_ptr);
+        if (req.floor != -1) {
+            return false;
+        }
+        queue_ptr++;
+    }
+    return true;
+}

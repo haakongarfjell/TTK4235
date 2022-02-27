@@ -1,6 +1,7 @@
 #pragma once
 #include "elevio.h"
 #include "con_load.h"
+#include <stdbool.h>
 
 
 
@@ -22,7 +23,9 @@ void addToQueue(Request* queue_ptr, Request element, int size);
 
 void resetQueue(Request* queue_ptr, int size);
 
-void removeDuplicateNeighboursInQueue(Request* queue_ptr);
+bool checkNoRequests(Request* queue_ptr, int size);
+
+//void removeDuplicateNeighboursInQueue(Request* queue_ptr, int size);
 
 
 

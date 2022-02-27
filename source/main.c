@@ -34,7 +34,7 @@ int main(){
     printf("b2: %d \n", queue[1].floor);
     printf("b3: %d \n", queue[2].floor);
     printf("b4: %d \n", queue[3].floor);
-    leftShiftQueue(&queue, 4);
+    leftShiftQueue(&queue, 3);
     printf("b1: %d \n", queue[0].floor);
     printf("b2: %d \n", queue[1].floor);
     printf("b3: %d \n", queue[2].floor);

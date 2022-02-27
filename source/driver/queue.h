@@ -7,17 +7,17 @@
 typedef struct {
     ButtonType buttonType;
     int floor;
-} Button;       // Navn?
+} Button;       // Navn: request
 
 Button buttonCheck();
 
-void leftShiftQueue(Button* queue, int size);
+void leftShiftQueue(Button* queue_ptr, int size);
 
-void addToQueue(Button button);
+void addToQueue(Button button, int size);
 
-void resetQueue(Button* queue);
+void resetQueue(Button* queue_ptr);
 
-void removeDuplicateNeighboursInQueue(Button* queue);
+void removeDuplicateNeighboursInQueue(Button* queue_ptr);
 
 
 

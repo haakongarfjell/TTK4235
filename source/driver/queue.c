@@ -15,23 +15,20 @@ Button buttonCheck() {
 }
 
 
-void leftShiftQueue(Button* queue, int size) {    // bytt navn til queue_ptr
+void leftShiftQueue(Button* queue_ptr, int size) {    // bytt navn til queue_ptr
 
-    Button *queue_next = queue;
-    for (int i = 0; i < size-1; i++) {
-        //printf("%d", (*queue).floor);
+    Button *queue_ptr_next = queue_ptr;
+    for (int i = 0; i < size; i++) {
 
-        queue_next++;
-        //printf("%d", (*queue_next).floor);
-        (*queue) = (*queue_next);
+        queue_ptr_next++;
+
+        (*queue_ptr) = (*queue_ptr_next);
+        queue_ptr++;
     }
-    (*queue_next).floor = -1;
+    (*queue_ptr_next).floor = -1;
 
-
-    // for (int k = 10; k > 0; k--) {        
-    //     queue[k]=queue[k-1];
-    // }
-    // Button b;
-    // b.floor = -1;
 }
 
+void addToQueue(Button button, int size) {
+    
+}

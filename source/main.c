@@ -80,6 +80,8 @@ int main(){
         
         runStateMachine(queue, g_queue_size, &s);
 
+        Request request = buttonCheck();
+        addToQueue(&queue, request, g_queue_size);
         // if(floor == 0){
         //     elevio_motorDirection(DIRN_UP);
         // }

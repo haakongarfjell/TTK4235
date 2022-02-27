@@ -4,7 +4,7 @@
 
 void runStateMachine(Request* queue, int size, State* state) {
 
-    Request nextInQueue = *queue;
+    Request firstInQueue = *queue;
     int floor = elevio_floorSensor();
 
     if (elevio_stopButton()) {
@@ -15,6 +15,34 @@ void runStateMachine(Request* queue, int size, State* state) {
     {
     case IDLE: {
         printf("You are now IDLE \n");
+        if (checkNoRequests(&queue, size)) {
+            break;
+        }
+        ButtonType buttonType = firstInQueue.buttonType;
+        
+        if (buttonType == BUTTON_HALL_UP) {
+            *state = UP;
+            break;
+        }
+        if (buttonType == BUTTON_HALL_DOWN) {
+            *state = DOWN;
+            break;
+        }
+        if (buttonType == BUTTON_CAB) {
+            int cab_floor = firstInQueue.floor;
+            if (cab_floor > floor) {
+                *state = UP;
+                break;
+            }
+            if (cab_floor < floor) {
+                *state = DOWN;
+                break;
+            }
+            else {
+                *state = AT_FLOOR;
+                break;
+            }
+        }
         break;
     }
     case STOP: {
@@ -48,15 +76,18 @@ void runStateMachine(Request* queue, int size, State* state) {
         break;
     }
     case UP: {
+        printf("State : UP \n");
         // if floor == queue[0].floor
         // state = at_floor
         break;
     }
     case DOWN: {
-
+        printf("State : DOWN \n");
+        elevio_motorDirection(DIRN_DOWN);
         break;
     }
     case AT_FLOOR: {
+        printf("State : AT_FLOOR \n");
         // leftshift
         // dør greier
         // sjekk queue[0]
@@ -64,6 +95,7 @@ void runStateMachine(Request* queue, int size, State* state) {
     }
     default: {
         // udefinert atm
+        printf("Feil \n");
         break;
     }
 

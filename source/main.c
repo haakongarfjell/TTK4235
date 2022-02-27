@@ -4,7 +4,8 @@
 #include <time.h>
 #include "driver/elevio.h"
 
-#include "driver/door.h"
+//#include "driver/door.h"
+#include "driver/queue.h"
 
 // Haakon sin token: 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
 
@@ -17,11 +18,34 @@ int main(){
     elevio_doorOpenLamp(0);
 
     // Her er en endring
+    Button b1,b2,b3,b4;
+    b1.buttonType = BUTTON_HALL_DOWN;
+    b1.floor = 2;
+    b2.buttonType = BUTTON_HALL_UP;
+    b2.floor = 0;
+    b3.buttonType = BUTTON_CAB;
+    b3.floor = 4;
+    b4.buttonType = BUTTON_CAB;
+    b4.floor = 7;
 
-
+    Button queue[4] = {b1,b2,b3,b4};
+    printf("b1: %d \n", queue[0].floor);
+    printf("b2: %d \n", queue[1].floor);
+    printf("b3: %d \n", queue[2].floor);
+    printf("b4: %d \n", queue[3].floor);
+    leftShiftQueue(&queue, 4);
+    printf("b1: %d \n", queue[0].floor);
+    printf("b2: %d \n", queue[1].floor);
+    printf("b3: %d \n", queue[2].floor);
+    printf("b4: %d \n", queue[3].floor);
     while(1){
         int floor = elevio_floorSensor();
         //printf("floor: %d \n",floor);
+
+  
+        
+
+     
 
         if(floor == 0){
             elevio_motorDirection(DIRN_UP);
@@ -34,7 +58,7 @@ int main(){
         for(int f = 0; f < N_FLOORS; f++){
             for(int b = 0; b < N_BUTTONS; b++){
                 int btnPressed = elevio_callButton(f, b);
-                printf("knapp: %d \n",btnPressed);
+                //printf("knapp: %d \n",btnPressed);
                 elevio_buttonLamp(f, b, btnPressed);
             }
         }    

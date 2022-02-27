@@ -2,7 +2,7 @@
 #include "elevio.h"
 #include "con_load.h"
 
-#define g_queueSize 10;
+//constexpr int g_queueSize = 10;
 
 typedef struct {
     ButtonType buttonType;
@@ -11,7 +11,7 @@ typedef struct {
 
 Button buttonCheck();
 
-void leftShiftQueue(Button* queue);
+void leftShiftQueue(Button* queue, int size);
 
 void addToQueue(Button button);
 

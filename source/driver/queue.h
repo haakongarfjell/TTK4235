@@ -7,20 +7,20 @@
 typedef struct {
     ButtonType buttonType;
     int floor;
-} Button;       // Navn: request
+} Request;       // Navn: request
 
-Button buttonCheck();
+Request buttonCheck();
 
-void leftShiftQueue(Button* queue_ptr, int size);
+void leftShiftQueue(Request* queue_ptr, int size);
 
-void addToQueue(Button button, int size);
+void addToQueue(Request* queue_ptr, Request element, int size);
 
-void resetQueue(Button* queue_ptr);
+void resetQueue(Request* queue_ptr);
 
-void removeDuplicateNeighboursInQueue(Button* queue_ptr);
-
-
+void removeDuplicateNeighboursInQueue(Request* queue_ptr);
 
 
-// Button queue[g_queueSize]; Skal være global i main.
+
+
+// Request queue[g_queueSize]; Skal være global i main.
 

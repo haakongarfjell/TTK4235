@@ -19,7 +19,7 @@ int main(){
     elevio_doorOpenLamp(0);
 
     // Her er en endring
-    Button b1,b2,b3,b4;
+    Request b1,b2,b3,b4;
     b1.buttonType = BUTTON_HALL_DOWN;
     b1.floor = 2;
     b2.buttonType = BUTTON_HALL_UP;
@@ -29,12 +29,19 @@ int main(){
     b4.buttonType = BUTTON_CAB;
     b4.floor = 7;
 
-    Button queue[4] = {b1,b2,b3,b4};
+    Request queue[4] = {b1,b2,b3,b4};
     printf("b1: %d \n", queue[0].floor);
     printf("b2: %d \n", queue[1].floor);
     printf("b3: %d \n", queue[2].floor);
     printf("b4: %d \n", queue[3].floor);
-    leftShiftQueue(&queue, 3);
+    printf("%d \n");
+    leftShiftQueue(&queue, 4);
+    printf("b1: %d \n", queue[0].floor);
+    printf("b2: %d \n", queue[1].floor);
+    printf("b3: %d \n", queue[2].floor);
+    printf("b4: %d \n", queue[3].floor);
+    printf("%d \n");
+    addToQueue(&queue, b4, 4);
     printf("b1: %d \n", queue[0].floor);
     printf("b2: %d \n", queue[1].floor);
     printf("b3: %d \n", queue[2].floor);

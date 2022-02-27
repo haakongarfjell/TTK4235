@@ -33,3 +33,10 @@ void addToQueue(Request* queue_ptr, Request element, int size) {
     Request* new_queue_ptr = queue_ptr+(size-1);
     (*new_queue_ptr) = element;
 }
+
+void resetQueue(Request* queue_ptr, int size) {
+    for (int i = 0; i < size; i++) {
+        (*queue_ptr).floor = -1;
+        queue_ptr++;
+    }
+}

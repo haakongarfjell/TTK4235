@@ -2,7 +2,12 @@
 #include "elevio.h"
 #include "con_load.h"
 
-//constexpr int g_queueSize = 10;
+
+
+/*
+Hvis buttonType = CAB: floor er etasjen som vi skal til.
+Hvis buttonType = UP/DOWN: floor er etasjen der knappen har blitt trykket.
+*/
 
 typedef struct {
     ButtonType buttonType;
@@ -15,7 +20,7 @@ void leftShiftQueue(Request* queue_ptr, int size);
 
 void addToQueue(Request* queue_ptr, Request element, int size);
 
-void resetQueue(Request* queue_ptr);
+void resetQueue(Request* queue_ptr, int size);
 
 void removeDuplicateNeighboursInQueue(Request* queue_ptr);
 

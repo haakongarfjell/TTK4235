@@ -10,6 +10,8 @@
 // Haakon sin token: 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
 // haha jeg har tilgang til repoet ditt
 
+int g_queue_size = 4;
+
 int main(){
 
     elevio_init();
@@ -29,31 +31,33 @@ int main(){
     b4.buttonType = BUTTON_CAB;
     b4.floor = 7;
 
-    Request queue[4] = {b1,b2,b3,b4};
+    Request queue[g_queue_size] = {b1,b2,b3,b4};
     printf("b1: %d \n", queue[0].floor);
     printf("b2: %d \n", queue[1].floor);
     printf("b3: %d \n", queue[2].floor);
     printf("b4: %d \n", queue[3].floor);
     printf("%d \n");
-    leftShiftQueue(&queue, 4);
+    leftShiftQueue(&queue, g_queue_size);
     printf("b1: %d \n", queue[0].floor);
     printf("b2: %d \n", queue[1].floor);
     printf("b3: %d \n", queue[2].floor);
     printf("b4: %d \n", queue[3].floor);
     printf("%d \n");
-    addToQueue(&queue, b4, 4);
+    addToQueue(&queue, b4, g_queue_size);
     printf("b1: %d \n", queue[0].floor);
     printf("b2: %d \n", queue[1].floor);
     printf("b3: %d \n", queue[2].floor);
     printf("b4: %d \n", queue[3].floor);
+    printf("%d \n");
+    resetQueue(&queue, g_queue_size);
+    printf("b1: %d \n", queue[0].floor);
+    printf("b2: %d \n", queue[1].floor);
+    printf("b3: %d \n", queue[2].floor);
+    printf("b4: %d \n", queue[3].floor);
+    
     while(1){
         int floor = elevio_floorSensor();
         //printf("floor: %d \n",floor);
-
-  
-        
-
-     
 
         if(floor == 0){
             elevio_motorDirection(DIRN_UP);

@@ -6,7 +6,7 @@
 
 #include "driver/door.h"
 
-// Haakon sin token: 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
+// Haakon sin token: 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
 
 int main(){
 

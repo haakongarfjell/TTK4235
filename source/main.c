@@ -8,6 +8,7 @@
 #include "driver/queue.h"
 
 // Haakon sin token: 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
+// haha jeg har tilgang til repoet ditt
 
 int main(){
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "elevio.h"
+#include "time.h"
 
 void utdeltTestfunksjon();
 

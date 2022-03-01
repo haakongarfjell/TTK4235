@@ -15,9 +15,6 @@
 void utdeltTestfunksjon() {
 
     elevio_init();
-    
-
-
 
     printf("=== Example Program ===\n");
     printf("Press the stop button on the elevator panel to exit\n");
@@ -105,8 +102,16 @@ void Door::doorClose() {
 
 void doorWait() {
     elevio_doorOpenLamp(1);
-    sleep(3);
-    elevio_doorOpenLamp(0);
+    time_t initSeconds;
+    initSeconds = time(NULL);
+    while (1) {
+        time_t seconds;
+        seconds = time(NULL);
+        if ((seconds - initSeconds) == 3) {
+            elevio_doorOpenLamp(0);
+            return;
+        }
+    }
 }
 
 void doorOpen() {

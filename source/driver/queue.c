@@ -1,18 +1,21 @@
 #include "queue.h"
 
 Request buttonCheck() {
+    Request tempRequest;
     for(int f = 0; f < N_FLOORS; f++){
         for(int b = 0; b < N_BUTTONS; b++){
             int btnPressed = elevio_callButton(f, b);
             elevio_buttonLamp(f, b, btnPressed);
             if (btnPressed == 1) {
-                Request tempRequest;
                 tempRequest.buttonType = b;
                 tempRequest.floor = f;
                 return tempRequest;
+            } else {
+                tempRequest.floor = -1;
             }
         }
     }
+    return tempRequest;
 }
 
 
@@ -44,6 +47,7 @@ void resetQueue(Request* queue_ptr, int size) {
 
 bool checkNoRequests(Request* queue_ptr, int size) {
     //int counter = 0;
+    //Request* temp_ptr = queue_ptr;
     for (int i = 0; i < size; i++) {
         Request req = (*queue_ptr);
         if (req.floor != -1) {
@@ -52,4 +56,16 @@ bool checkNoRequests(Request* queue_ptr, int size) {
         queue_ptr++;
     }
     return true;
+}
+
+void printQueue(Request* queue_ptr, int size) {
+
+    for (int i = 0; i < size; i++) {
+        Request req = *queue_ptr;
+        printf("Number: %d \n", i);
+        printf("Floor: %d ", req.floor);
+        printf("ButtonType: %d \n", req.buttonType);
+        queue_ptr++;
+    }
+
 }

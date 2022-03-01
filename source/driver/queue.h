@@ -25,7 +25,7 @@ void resetQueue(Request* queue_ptr, int size);
 
 bool checkNoRequests(Request* queue_ptr, int size);
 
-
+void printQueue(Request* queue_ptr, int size);
 
 //void removeDuplicateNeighboursInQueue(Request* queue_ptr, int size);
 

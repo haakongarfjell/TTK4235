@@ -11,77 +11,38 @@
 // Haakon sin token: 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
 // haha jeg har tilgang til repoet ditt
 
-int g_queue_size = 4;
+int g_queue_size = 10;
 
 int main(){
 
     elevio_init();
 
-    elevio_motorDirection(DIRN_UP);
+    //elevio_motorDirection(DIRN_UP);
 
     elevio_doorOpenLamp(0);
-
+    elevio_stopLamp(0);
     // Her er en endring
-    Request b1,b2,b3,b4;
-    b1.buttonType = BUTTON_HALL_DOWN;
-    b1.floor = 2;
-    b2.buttonType = BUTTON_HALL_UP;
-    b2.floor = 0;
-    b3.buttonType = BUTTON_CAB;
-    b3.floor = 4;
-    b4.buttonType = BUTTON_CAB;
-    b4.floor = 7;
-
     Request queue[g_queue_size];
-    addToQueue(&queue, b1, g_queue_size);
-    leftShiftQueue(&queue, g_queue_size);
-    addToQueue(&queue, b2, g_queue_size);
-    leftShiftQueue(&queue, g_queue_size);
-    addToQueue(&queue, b3, g_queue_size);
-    leftShiftQueue(&queue, g_queue_size);
-    addToQueue(&queue, b4, g_queue_size);
-
-    printf("b1: %d \n", queue[0].floor);
-    printf("b2: %d \n", queue[1].floor);
-    printf("b3: %d \n", queue[2].floor);
-    printf("b4: %d \n", queue[3].floor);
-    printf("%d \n");
-    leftShiftQueue(&queue, g_queue_size);
-    printf("b1: %d \n", queue[0].floor);
-    printf("b2: %d \n", queue[1].floor);
-    printf("b3: %d \n", queue[2].floor);
-    printf("b4: %d \n", queue[3].floor);
-    printf("%d \n");
-    addToQueue(&queue, b4, g_queue_size);
-    printf("b1: %d \n", queue[0].floor);
-    printf("b2: %d \n", queue[1].floor);
-    printf("b3: %d \n", queue[2].floor);
-    printf("b4: %d \n", queue[3].floor);
-    printf("%d \n");
-    printf("Queuecheck : %d \n", checkNoRequests(&queue, g_queue_size));
-    printf("%d \n");
     resetQueue(&queue, g_queue_size);
-    printf("b1: %d \n", queue[0].floor);
-    printf("b2: %d \n", queue[1].floor);
-    printf("b3: %d \n", queue[2].floor);
-    printf("b4: %d \n", queue[3].floor);
-    printf("%d \n");
-    printf("Queuecheck : %d \n", checkNoRequests(&queue, g_queue_size));
 
     State s = IDLE;
     //elevio_motorDirection(DIRN_UP);
+
 
     while(1){
         //int floor = elevio_floorSensor();
         //printf("floor: %d \n",floor);
 
-  
+        printQueue(&queue, g_queue_size);
         
         
-        runStateMachine(queue, g_queue_size, &s);
+        runStateMachine(&queue, g_queue_size, &s);
 
         Request request = buttonCheck();
         addToQueue(&queue, request, g_queue_size);
+
+
+
         // if(floor == 0){
         //     elevio_motorDirection(DIRN_UP);
         // }

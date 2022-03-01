@@ -4,44 +4,67 @@
 
 void runStateMachine(Request* queue, int size, State* state) {
 
-    Request firstInQueue = *queue;
-    int floor = elevio_floorSensor();
+    printf("Stopbutton: %d \n", elevio_stopButton());
 
+
+    if (checkNoRequests(queue,size)) {
+        *state = IDLE;
+    }
     if (elevio_stopButton()) {
         *state = STOP;
+    }
+    
+    Request firstInQueue = *queue;
+    ButtonType buttonType = firstInQueue.buttonType;
+    int floor = firstInQueue.floor;
+    int current_floor = elevio_floorSensor();
+
+    if (floor == -1 && checkNoRequests(queue, size) == 0) {
+        leftShiftQueue(queue, size);
+        return;
     }
 
     switch (*state)
     {
     case IDLE: {
         printf("You are now IDLE \n");
-        if (checkNoRequests(&queue, size)) {
+        elevio_motorDirection(DIRN_STOP);
+        printf("Buttontype: %d \n", buttonType);
+        printf("CheckReq: %d \n", checkNoRequests(queue,size));
+
+
+        if (checkNoRequests(queue,size)) {
+            *state = IDLE;
             break;
         }
-        ButtonType buttonType = firstInQueue.buttonType;
-        
         if (buttonType == BUTTON_HALL_UP) {
-            *state = UP;
+            if (floor > current_floor) {
+                *state = UP;
+            } else {
+                *state = DOWN;
+            }
             break;
         }
         if (buttonType == BUTTON_HALL_DOWN) {
-            *state = DOWN;
+            if (floor < current_floor) {
+                *state = UP;
+            } else {
+                *state = DOWN;
+            }
             break;
         }
         if (buttonType == BUTTON_CAB) {
-            int cab_floor = firstInQueue.floor;
-            if (cab_floor > floor) {
+            if (floor > current_floor) {
                 *state = UP;
                 break;
             }
-            if (cab_floor < floor) {
+            if (floor < current_floor) {
                 *state = DOWN;
                 break;
             }
-            else {
-                *state = AT_FLOOR;
-                break;
-            }
+            // else {
+            //     *state = AT_FLOOR;
+            //     break;
         }
         break;
     }
@@ -50,20 +73,21 @@ void runStateMachine(Request* queue, int size, State* state) {
         elevio_motorDirection(DIRN_STOP);
         resetQueue(queue, size);
         elevio_stopLamp(1);
+        //printf("StopButton2 : %d", elevio_stopButton());
         if (elevio_stopButton()) {
-            if (floor == -1) {
+            if (current_floor == -1) {
                 break;
             }
             doorOpen();
             break;
         } 
         else {
-            if (floor == -1) {
-                elevio_stopLamp(0);
+            elevio_stopLamp(0);
+            if (current_floor == -1) {
                 *state = IDLE;
+                doorClose();
                 break;
             }
-            elevio_stopLamp(0);
             doorWait();
             *state = IDLE;
             break;
@@ -73,24 +97,40 @@ void runStateMachine(Request* queue, int size, State* state) {
         // Hvis i en etasje - åpne dør
         // Heisen skal stoppe
         // Hvis knapp - gå til UP/DOWN
-        break;
     }
     case UP: {
         printf("State : UP \n");
-        // if floor == queue[0].floor
-        // state = at_floor
+        if (current_floor == floor) {
+            *state = AT_FLOOR;
+            break;
+        }
+        elevio_motorDirection(DIRN_UP);
+        elevio_doorOpenLamp(0);
         break;
     }
     case DOWN: {
         printf("State : DOWN \n");
+        if (current_floor == floor) {
+            *state = AT_FLOOR;
+            break;
+        }
         elevio_motorDirection(DIRN_DOWN);
+        elevio_doorOpenLamp(0);
         break;
     }
     case AT_FLOOR: {
         printf("State : AT_FLOOR \n");
+        if (floor == -1 ) {
+            *state = IDLE;
+            break;
+        }
+        elevio_motorDirection(DIRN_STOP);
+        doorWait();     // Evt. doorOpen()
+        leftShiftQueue(queue, size);
         // leftshift
         // dør greier
         // sjekk queue[0]
+        *state = IDLE;
         break;
     }
     default: {

@@ -27,7 +27,7 @@ int main(){
 
     State s = IDLE;
     //elevio_motorDirection(DIRN_UP);
-
+    // test
 
     while(1){
         //int floor = elevio_floorSensor();

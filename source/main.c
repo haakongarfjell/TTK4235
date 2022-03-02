@@ -11,6 +11,8 @@
 // Haakon sin token: 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
 // haha jeg har tilgang til repoet ditt
 
+        // Dette er en endring
+
 int g_queue_size = 10;
 
 int main(){

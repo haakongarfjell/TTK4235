@@ -61,13 +61,21 @@ int main(){
             time_t initSeconds;
             initSeconds = time(NULL);
             while (1) {
+                if (elevio_obstruction()) {
+                    initSeconds = time(NULL);
+                    requestLights(&queue, g_queue_size);
+                    Request request = buttonCheck();
+                    addToQueue(&queue, request, g_queue_size);
+                    removeDuplicates(&queue, g_queue_size);
+                    continue;
+                }
                 requestLights(&queue, g_queue_size);
                 Request request = buttonCheck();
                 addToQueue(&queue, request, g_queue_size);
                 removeDuplicates(&queue, g_queue_size);
                 time_t seconds;
                 seconds = time(NULL);
-                if ((seconds - initSeconds) > 2) {
+                if ((seconds - initSeconds) == 3) {
                     elevio_doorOpenLamp(0);
                     doorFlag = 0;
                     s = INIT;

@@ -17,6 +17,7 @@ struct Door {
 }
 */
 
+
 void doorWait();
 void doorOpen(); 
 void doorClose();  

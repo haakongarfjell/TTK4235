@@ -147,7 +147,7 @@
 
 
 
-void runStateMachine2(Request* queue, int size, State2* state, int* current_floor, int* doorFlag) {
+void runStateMachine2(Request* queue, int size, State2* state, int* current_floor, int* doorFlag, int* stop_flag) {
 
     Request firstInQueue = *queue;
     ButtonType buttonType = firstInQueue.buttonType;
@@ -166,6 +166,7 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
     switch(*state)
     {
         case INIT: {
+            elevio_doorOpenLamp(0);
             //printf("State : INIT \n");
             if (checkNoRequests(queue, size) != 1) {
                 *state = MOVE;
@@ -188,19 +189,15 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
         }
         case AT_FLOOR: {
             elevio_motorDirection(DIRN_STOP);
+            elevio_floorIndicator(*current_floor);
             //printf("State : AT_FLOOR \n");
             elevio_stopLamp(0);
             *state = DOOR;
             break;
         }
         case STOP: {
-            //printf("State : STOP \n");
             elevio_stopLamp(1);
-            elevio_motorDirection(DIRN_STOP);
-            if (current_floor != -1) {
-                *state = AT_FLOOR;
-            }
-            resetQueue(queue, size);
+            *stop_flag = 1;
             break;
         }
         case DOOR: {

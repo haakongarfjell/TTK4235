@@ -7,49 +7,56 @@
 #include "driver/door.h"
 #include "driver/queue.h"
 #include "driver/state_machine.h"
+#include "driver/utilities.h"
 
 // Haakon sin token: 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
 // haha jeg har tilgang til repoet ditt
 
-        // Dette er en endring
+// Dette er en endring
 
 int g_queue_size = 10;
 
 int main(){
 
     elevio_init();
-
-    //elevio_motorDirection(DIRN_UP);
-
     elevio_doorOpenLamp(0);
     elevio_stopLamp(0);
-    // Her er en endring
+
     Request queue[g_queue_size];
     resetQueue(&queue, g_queue_size);
 
     State2 s = INIT;
+    start_init();
     int current_floor = 0;
-
-    // test
-    elevio_motorDirection(DIRN_DOWN);
-
-    // time_t initSeconds;
-    // initSeconds = time(NULL);
     int doorFlag = 0;
+    int stop_flag = 0;
+
     while(1){
-        //int floor = elevio_floorSensor();
-        //printf("floor: %d \n",floor);
-        // time_t seconds;
-        // if (s == DOOR && doorFlag == 1) {
-        //     seconds = time(NULL);
-        //     printf("Seconds: %d \n", seconds-initSeconds);
+        //printf("Stopbutton %d \n", elevio_stopButton());
+        // if (elevio_stopButton()) {
+        //     s = STOP;
         // }
 
-        // if ((seconds - initSeconds) == 3) {
-        //     elevio_doorOpenLamp(0);
-        //     s = INIT;
-        //     doorFlag = 0;
+        // if (s == STOP) {
+        //     elevio_motorDirection(DIRN_STOP);
+        //     resetQueue(queue, g_queue_size);
+        //     if (current_floor != -1) {
+        //         elevio_doorOpenLamp(1);
+        //     } else {
+        //         elevio_doorOpenLamp(0);
+        //     }
+        //     while(1) {
+        //         int stop_button = elevio_stopButton();
+        //         if (stop_button == 1) {
+        //             continue;
+        //         } else {
+        //             s = INIT;
+        //             break;
+        //         }
+        //     }
         // }
+
+
         if (doorFlag == 1) {
             time_t initSeconds;
             initSeconds = time(NULL);
@@ -69,11 +76,9 @@ int main(){
         }
 
         printQueue(&queue, g_queue_size);
-        if (elevio_stopButton()) {
-            s = STOP;
-        }
+
         if (doorFlag == 0) {
-            runStateMachine2(&queue, g_queue_size, &s, &current_floor, &doorFlag);
+            runStateMachine2(&queue, g_queue_size, &s, &current_floor, &doorFlag, &stop_flag);
         }
         
         Request request = buttonCheck();

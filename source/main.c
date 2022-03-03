@@ -56,11 +56,12 @@ int main(){
         //     }
         // }
 
-
+        requestLights(&queue, g_queue_size);
         if (doorFlag == 1) {
             time_t initSeconds;
             initSeconds = time(NULL);
             while (1) {
+                requestLights(&queue, g_queue_size);
                 Request request = buttonCheck();
                 addToQueue(&queue, request, g_queue_size);
                 removeDuplicates(&queue, g_queue_size);

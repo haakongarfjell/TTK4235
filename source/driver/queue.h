@@ -33,6 +33,8 @@ void removeDuplicates(Request* queue_ptr, int size);
 
 int numRequestsAtFloor(Request* queue_ptr, int floor);
 
+void requestLights(Request* queue_ptr, int size);
+
 //void removeDuplicateNeighboursInQueue(Request* queue_ptr, int size);
 
 

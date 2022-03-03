@@ -115,3 +115,13 @@ int numRequestsAtFloor(Request* queue_ptr, int floor) {
     }
     return counter;
 }
+
+void requestLights(Request* queue_ptr, int size) {
+    for (int i = 0; i < size; i++) {
+        Request req = *queue_ptr;
+        if (req.floor != -1) {
+            elevio_buttonLamp(req.floor, req.buttonType, 1);
+        }
+        queue_ptr++;
+    }
+}

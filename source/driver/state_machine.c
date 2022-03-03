@@ -175,7 +175,12 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
         }
         case MOVE: {
             if (floor == *current_floor) {
-                leftShiftQueue(queue, size);
+                printf("Current floor %d \n", *current_floor);
+                int num_at_floor = numRequestsAtFloor(queue, *current_floor);
+                printf("Numatfloor %d \n", num_at_floor);
+                for (int i = 0; i < num_at_floor; i++) {
+                    leftShiftQueue(queue, size);
+                }
                 *state = AT_FLOOR;
                 break;
             }

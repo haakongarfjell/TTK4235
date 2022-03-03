@@ -65,8 +65,6 @@ void resetQueue(Request* queue_ptr, int size) {
 }
 
 bool checkNoRequests(Request* queue_ptr, int size) {
-    //int counter = 0;
-    //Request* temp_ptr = queue_ptr;
     for (int i = 0; i < size; i++) {
         Request req = (*queue_ptr);
         if (req.floor != -1) {
@@ -78,7 +76,6 @@ bool checkNoRequests(Request* queue_ptr, int size) {
 }
 
 void printQueue(Request* queue_ptr, int size) {
-
     for (int i = 0; i < size; i++) {
         Request req = *queue_ptr;
         printf("Floor: %d ", req.floor);
@@ -104,4 +101,17 @@ void removeDuplicates(Request* queue_ptr, int size) {
         queue_ptr++;
     }
 
+}
+
+int numRequestsAtFloor(Request* queue_ptr, int floor) {
+    int counter = 0;
+    for (int i = 0; i < 3; i++) {       // maks 2 etterfølgende
+        Request req = *queue_ptr;
+        //printf("reqfloor %d \n", req.floor);
+        if (req.floor == floor) {
+            counter++;
+        }
+        queue_ptr++;
+    }
+    return counter;
 }

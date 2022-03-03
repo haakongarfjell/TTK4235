@@ -31,6 +31,8 @@ void printQueue(Request* queue_ptr, int size);
 
 void removeDuplicates(Request* queue_ptr, int size);
 
+int numRequestsAtFloor(Request* queue_ptr, int floor);
+
 //void removeDuplicateNeighboursInQueue(Request* queue_ptr, int size);
 
 

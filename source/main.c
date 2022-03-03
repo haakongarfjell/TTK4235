@@ -29,31 +29,39 @@ int main(){
 
     State2 s = INIT;
     int current_floor = 0;
+
     // test
     while(current_floor != 0) {
         elevio_motorDirection(DIRN_DOWN);
     }
 
 
+
+    time_t initSeconds;
+    initSeconds = time(NULL);
+    int doorFlag = 0;
     while(1){
         //int floor = elevio_floorSensor();
         //printf("floor: %d \n",floor);
+        time_t seconds;
+        if (s == DOOR && doorFlag == 1) {
+            seconds = time(NULL);
+            doorFlag = 0;
+        }
+        if ((seconds - initSeconds) == 3) {
+            elevio_doorOpenLamp(0);
+            s = INIT;
+        }
 
         printQueue(&queue, g_queue_size);
-        //printf("Stopbutton: %d", stop);
         if (elevio_stopButton()) {
             s = STOP;
         }
-            
+
         runStateMachine2(&queue, g_queue_size, &s, &current_floor);
-
         Request request = buttonCheck();
-        if (checkIfInQueue(&queue, request, g_queue_size) == false) {
-            printf("Adding to queue \n");
-            addToQueue(&queue, request, g_queue_size);
-        }
-
-        //printf("Current_floor %d \n", current_floor);
+        addToQueue(&queue, request, g_queue_size);
+        removeDuplicates(&queue, g_queue_size);
 
         // if(floor == 0){
         //     elevio_motorDirection(DIRN_UP);

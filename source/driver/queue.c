@@ -88,10 +88,21 @@ void printQueue(Request* queue_ptr, int size) {
     printf("------------------------\n");
 }
 
-void removeDupliocates(Request* queue_ptr, int size) {
+void removeDuplicates(Request* queue_ptr, int size) {
+
 
     for (int i = 0; i < size; i++) {
-        
+        Request current_element = *queue_ptr;
+        Request* check_ptr = (queue_ptr+1);
+        for (int j = 0; j < size-i-1; j++) {
+            Request check_element = *check_ptr;
+            if (check_element.floor == current_element.floor) {
+                (*check_ptr).floor = -1;
+                (*check_ptr).buttonType = BUTTON_NONE;
+            }
+        }
+
+        queue_ptr++;
     }
 
 }

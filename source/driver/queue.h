@@ -29,7 +29,7 @@ bool checkNoRequests(Request* queue_ptr, int size);
 
 void printQueue(Request* queue_ptr, int size);
 
-void removeDupliocates(Request* queue_ptr, int size);
+void removeDuplicates(Request* queue_ptr, int size);
 
 //void removeDuplicateNeighboursInQueue(Request* queue_ptr, int size);
 

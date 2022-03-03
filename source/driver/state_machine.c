@@ -190,7 +190,7 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
             elevio_motorDirection(DIRN_STOP);
             //printf("State : AT_FLOOR \n");
             elevio_stopLamp(0);
-            *state = INIT;
+            *state = DOOR;
             break;
         }
         case STOP: {
@@ -204,6 +204,7 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
             break;
         }
         case DOOR: {
+            elevio_doorOpenLamp(1);
             break;
         }
         default: {

@@ -147,7 +147,7 @@
 
 
 
-void runStateMachine2(Request* queue, int size, State2* state, int* current_floor) {
+void runStateMachine2(Request* queue, int size, State2* state, int* current_floor, int* doorFlag) {
 
     Request firstInQueue = *queue;
     ButtonType buttonType = firstInQueue.buttonType;
@@ -205,6 +205,7 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
         }
         case DOOR: {
             elevio_doorOpenLamp(1);
+            *doorFlag = 1;
             break;
         }
         default: {

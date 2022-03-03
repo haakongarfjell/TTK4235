@@ -116,6 +116,8 @@ int numRequestsAtFloor(Request* queue_ptr, int floor) {
     return counter;
 }
 
+
+// Må legges inn flere steder for å oppdateres ofte nok
 void requestLights(Request* queue_ptr, int size) {
     for (int i = 0; i < size; i++) {
         Request req = *queue_ptr;

@@ -4,3 +4,4 @@
 
 void start_init();
 
+void testLights();

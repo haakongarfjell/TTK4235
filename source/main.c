@@ -31,50 +31,77 @@ int main(){
     int doorFlag = 0;
     int stop_flag = 0;
 
+    //elevio_buttonLamp(2, BUTTON_CAB, 1);
     while(1){
-        //printf("Stopbutton %d \n", elevio_stopButton());
-        // if (elevio_stopButton()) {
-        //     s = STOP;
-        // }
-
-        // if (s == STOP) {
-        //     elevio_motorDirection(DIRN_STOP);
-        //     resetQueue(queue, g_queue_size);
-        //     if (current_floor != -1) {
-        //         elevio_doorOpenLamp(1);
-        //     } else {
-        //         elevio_doorOpenLamp(0);
-        //     }
-        //     while(1) {
-        //         int stop_button = elevio_stopButton();
-        //         if (stop_button == 1) {
-        //             continue;
-        //         } else {
-        //             s = INIT;
-        //             break;
-        //         }
-        //     }
-        // }
-
         requestLights(&queue, g_queue_size);
+        
+
+        
+
+
+
+
+        //printf("Stopbutton %d \n", elevio_stopButton());
+        if (elevio_stopButton()) {
+            s = STOP;
+        }
+        
+
+        if (s == STOP) {
+            elevio_motorDirection(DIRN_STOP);
+            resetQueue(queue, g_queue_size);
+            if (elevio_floorSensor() != -1) {
+                elevio_doorOpenLamp(1);
+            } else {
+                elevio_doorOpenLamp(0);
+            }
+            requestLights(&queue, g_queue_size);
+            while(1) {
+                requestLights(&queue, g_queue_size);
+                int stop_button = elevio_stopButton();
+                if (stop_button == 1) {
+                    elevio_stopLamp(1);
+                    continue;
+                } 
+                elevio_stopLamp(0);
+                if (elevio_floorSensor() != -1) {
+                    s = DOOR;
+                    stop_flag = 0;
+                    break;
+                } else {
+                    stop_flag = 0;
+                    s = INIT;
+                    break;
+                }
+            }
+        }
+        
+        
         if (doorFlag == 1) {
             time_t initSeconds;
             initSeconds = time(NULL);
             while (1) {
+                
                 if (elevio_obstruction()) {
                     initSeconds = time(NULL);
-                    requestLights(&queue, g_queue_size);
+                    
                     Request request = buttonCheck();
+                    
                     addToQueue(&queue, request, g_queue_size);
+                    
                     removeDuplicates(&queue, g_queue_size);
+                    
                     continue;
                 }
-                requestLights(&queue, g_queue_size);
+                
                 Request request = buttonCheck();
                 addToQueue(&queue, request, g_queue_size);
+                
                 removeDuplicates(&queue, g_queue_size);
+                
                 time_t seconds;
                 seconds = time(NULL);
+                
                 if ((seconds - initSeconds) == 3) {
                     elevio_doorOpenLamp(0);
                     doorFlag = 0;
@@ -83,16 +110,18 @@ int main(){
                 }
             }           
         }
+        
 
         printQueue(&queue, g_queue_size);
 
-        if (doorFlag == 0) {
-            runStateMachine2(&queue, g_queue_size, &s, &current_floor, &doorFlag, &stop_flag);
-        }
+        //if (doorFlag == 0) {
+        runStateMachine2(&queue, g_queue_size, &s, &current_floor, &doorFlag, &stop_flag);
+        //}
         
         Request request = buttonCheck();
         addToQueue(&queue, request, g_queue_size);
         removeDuplicates(&queue, g_queue_size);
+        
 
         nanosleep(&(struct timespec){0, 20*1000*1000}, NULL);
     } 

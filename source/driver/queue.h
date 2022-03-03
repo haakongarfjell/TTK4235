@@ -19,6 +19,8 @@ Request buttonCheck();
 
 void leftShiftQueue(Request* queue_ptr, int size);
 
+bool checkIfInQueue(Request* queue_ptr, Request element, int size);
+
 void addToQueue(Request* queue_ptr, Request element, int size);
 
 void resetQueue(Request* queue_ptr, int size);
@@ -26,6 +28,8 @@ void resetQueue(Request* queue_ptr, int size);
 bool checkNoRequests(Request* queue_ptr, int size);
 
 void printQueue(Request* queue_ptr, int size);
+
+void removeDupliocates(Request* queue_ptr, int size);
 
 //void removeDuplicateNeighboursInQueue(Request* queue_ptr, int size);
 

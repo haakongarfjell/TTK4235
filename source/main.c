@@ -27,23 +27,33 @@ int main(){
     Request queue[g_queue_size];
     resetQueue(&queue, g_queue_size);
 
-    State s = IDLE;
-    //elevio_motorDirection(DIRN_UP);
+    State2 s = INIT;
+    int current_floor = 0;
     // test
+    while(current_floor != 0) {
+        elevio_motorDirection(DIRN_DOWN);
+    }
+
 
     while(1){
         //int floor = elevio_floorSensor();
         //printf("floor: %d \n",floor);
 
         printQueue(&queue, g_queue_size);
-        
-        
-        runStateMachine(&queue, g_queue_size, &s);
+        //printf("Stopbutton: %d", stop);
+        if (elevio_stopButton()) {
+            s = STOP;
+        }
+            
+        runStateMachine2(&queue, g_queue_size, &s, &current_floor);
 
         Request request = buttonCheck();
-        addToQueue(&queue, request, g_queue_size);
+        if (checkIfInQueue(&queue, request, g_queue_size) == false) {
+            printf("Adding to queue \n");
+            addToQueue(&queue, request, g_queue_size);
+        }
 
-
+        //printf("Current_floor %d \n", current_floor);
 
         // if(floor == 0){
         //     elevio_motorDirection(DIRN_UP);

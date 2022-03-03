@@ -15,7 +15,8 @@ typedef enum {
 typedef enum { 
     BUTTON_HALL_UP      = 0,
     BUTTON_HALL_DOWN    = 1,
-    BUTTON_CAB          = 2
+    BUTTON_CAB          = 2,
+    BUTTON_NONE         = 3
 } ButtonType;
 
 

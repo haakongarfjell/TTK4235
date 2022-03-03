@@ -12,6 +12,7 @@ Request buttonCheck() {
                 return tempRequest;
             } else {
                 tempRequest.floor = -1;
+                tempRequest.buttonType = BUTTON_NONE;
             }
         }
     }
@@ -33,14 +34,32 @@ void leftShiftQueue(Request* queue_ptr, int size) {    // bytt navn til queue_pt
 
 }
 
+bool checkIfInQueue(Request* queue_ptr, Request element, int size) {
+    for (int i = 0; i < size; i++) {
+        Request req = *queue_ptr;
+        if (req.floor == element.floor && req.buttonType == element.buttonType) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void addToQueue(Request* queue_ptr, Request element, int size) {
-    Request* new_queue_ptr = queue_ptr+(size-1);
-    (*new_queue_ptr) = element;
+    
+    for (int i = 0; i < size; i++) {
+        Request req = *queue_ptr;
+        if (req.floor == -1 || req.buttonType == 3) {
+            *queue_ptr = element;
+            break;
+        }
+        queue_ptr++;
+    }
 }
 
 void resetQueue(Request* queue_ptr, int size) {
     for (int i = 0; i < size; i++) {
         (*queue_ptr).floor = -1;
+        (*queue_ptr).buttonType = BUTTON_NONE;
         queue_ptr++;
     }
 }
@@ -62,10 +81,17 @@ void printQueue(Request* queue_ptr, int size) {
 
     for (int i = 0; i < size; i++) {
         Request req = *queue_ptr;
-        printf("Number: %d \n", i);
         printf("Floor: %d ", req.floor);
         printf("ButtonType: %d \n", req.buttonType);
         queue_ptr++;
+    }
+    printf("------------------------\n");
+}
+
+void removeDupliocates(Request* queue_ptr, int size) {
+
+    for (int i = 0; i < size; i++) {
+        
     }
 
 }

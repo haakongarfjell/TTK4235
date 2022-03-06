@@ -174,13 +174,35 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
             break;
         }
         case MOVE: {
+            int direction = floor-*current_floor;
+            if (direction > 0) {
+                printf("Direction value : %d \n", direction);
+                // Sjekk om noen skal opp
+                bool req_way = requestOnTheWay(queue, BUTTON_HALL_UP, *current_floor, size);
+                printf("sdaskd value : %d \n", req_way);
+                if (req_way) {
+                    printf("sdaskd value : %d \n", req_way);
+                    removeFloorRequest(queue, size, *current_floor);
+                    *state = AT_FLOOR;
+                    break;  
+                }
+            }
+            if (direction < 0) {
+                printf("Direction value : %d \n", direction);
+                // Sjekk om noen skal opp
+                bool req_way = requestOnTheWay(queue, BUTTON_HALL_DOWN, *current_floor, size);
+                printf("sdaskd value : %d \n", req_way);
+                if (req_way) {
+                    printf("sdaskd value : %d \n", req_way);
+                    removeFloorRequest(queue, size, *current_floor);
+                    *state = AT_FLOOR;
+                    break;  
+                }
+            }
+
             if (floor == *current_floor) {
                 printf("Current floor %d \n", *current_floor);
-                int num_at_floor = numRequestsAtFloor(queue, *current_floor);
-                printf("Numatfloor %d \n", num_at_floor);
-                for (int i = 0; i < num_at_floor; i++) {
-                    leftShiftQueue(queue, size);
-                }
+                removeFloorRequest(queue, size, *current_floor);
                 *state = AT_FLOOR;
                 break;
             }

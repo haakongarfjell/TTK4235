@@ -35,6 +35,11 @@ int numRequestsAtFloor(Request* queue_ptr, int floor);
 
 void requestLights(Request* queue_ptr, int size);
 
+void removeFloorRequest(Request* queue_ptr, int size, int floor);
+
+bool requestOnTheWay(Request* queue_ptr, ButtonType direction, int floor, int size);    // 1 up, 0 down
+
+
 //void removeDuplicateNeighboursInQueue(Request* queue_ptr, int size);
 
 

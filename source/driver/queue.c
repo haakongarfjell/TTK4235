@@ -127,3 +127,28 @@ void requestLights(Request* queue_ptr, int size) {
         queue_ptr++;
     }
 }
+
+void removeFloorRequest(Request* queue_ptr, int size, int floor) {
+
+    for (int i = 0; i < size; i++) {
+        Request req = *queue_ptr;
+        if (req.floor == floor) {
+            (*queue_ptr).floor = -1;
+            (*queue_ptr).buttonType = BUTTON_NONE;
+        }
+        queue_ptr++;
+    }
+
+}
+
+bool requestOnTheWay(Request* queue_ptr, ButtonType direction, int floor, int size) {
+
+    for (int i = 0; i < size; i++) {
+        Request req = *queue_ptr;
+        if (req.floor == floor && req.buttonType == direction) {
+            return true;
+        }
+        queue_ptr++;
+    }
+    return false;
+}

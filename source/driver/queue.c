@@ -5,7 +5,7 @@ Request buttonCheck() {
     for(int f = 0; f < N_FLOORS; f++){
         for(int b = 0; b < N_BUTTONS; b++){
             int btnPressed = elevio_callButton(f, b);
-            elevio_buttonLamp(f, b, btnPressed);
+            //elevio_buttonLamp(f, b, btnPressed);
             if (btnPressed == 1) {
                 tempRequest.buttonType = b;
                 tempRequest.floor = f;
@@ -119,11 +119,12 @@ int numRequestsAtFloor(Request* queue_ptr, int floor) {
 
 // Må legges inn flere steder for å oppdateres ofte nok
 void requestLights(Request* queue_ptr, int size) {
+    
     for (int i = 0; i < size; i++) {
         Request req = *queue_ptr;
         if (req.floor != -1) {
             elevio_buttonLamp(req.floor, req.buttonType, 1);
-        }
+        } 
         queue_ptr++;
     }
 }

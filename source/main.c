@@ -35,7 +35,6 @@ int main(){
     while(1){
         requestLights(&queue, g_queue_size);
         
-
         
 
 
@@ -50,6 +49,11 @@ int main(){
         if (s == STOP) {
             elevio_motorDirection(DIRN_STOP);
             resetQueue(queue, g_queue_size);
+                for(int f = 0; f < N_FLOORS; f++){
+                    for(int b = 0; b < N_BUTTONS; b++){
+                        elevio_buttonLamp(f, b, 0);
+                    }
+                }
             if (elevio_floorSensor() != -1) {
                 elevio_doorOpenLamp(1);
             } else {
@@ -81,7 +85,10 @@ int main(){
             time_t initSeconds;
             initSeconds = time(NULL);
             while (1) {
-                
+                requestLights(&queue, g_queue_size);
+                if (elevio_stopButton()) {
+                    break;
+                }
                 if (elevio_obstruction()) {
                     initSeconds = time(NULL);
                     

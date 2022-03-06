@@ -154,6 +154,8 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
     int floor = firstInQueue.floor;
     int floor_sensor = elevio_floorSensor();
     
+    requestLights(queue, size);
+
     if (floor_sensor != -1) {
         *current_floor = floor_sensor;
     }
@@ -217,6 +219,9 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
         }
         case AT_FLOOR: {
             elevio_motorDirection(DIRN_STOP);
+            elevio_buttonLamp(*current_floor, BUTTON_CAB, 0);
+            elevio_buttonLamp(*current_floor, BUTTON_HALL_DOWN, 0);
+            elevio_buttonLamp(*current_floor, BUTTON_HALL_UP, 0);
             elevio_floorIndicator(*current_floor);
             //printf("State : AT_FLOOR \n");
             elevio_stopLamp(0);

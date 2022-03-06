@@ -23,5 +23,5 @@ typedef enum {
 } State2;
 
 
-void runStateMachine2(Request* queue, int size, State2* state, int* current_floor, int* doorFlag, int* stop_flag);
+void runStateMachine2(Request* queue, int size, State2* state, int* current_floor, int* doorFlag, int* stop_flag, bool* between_floors, Direction* dir);
 

@@ -147,8 +147,8 @@
 
 
 
-void runStateMachine2(Request* queue, int size, State2* state, int* current_floor, int* doorFlag, int* stop_flag) {
-
+void runStateMachine2(Request* queue, int size, State2* state, int* current_floor, int* doorFlag, int* stop_flag, bool* between_floors, Direction* dir) {
+    
     Request firstInQueue = *queue;
     ButtonType buttonType = firstInQueue.buttonType;
     int floor = firstInQueue.floor;
@@ -179,42 +179,54 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
             int direction = floor-*current_floor;
             bool req_way_cab = requestOnTheWay(queue, BUTTON_CAB, floor_sensor, size);   // Skal dette være en funksjonalitet
             if (direction > 0) {
-                printf("Direction value : %d \n", direction);
-                // Sjekk om noen skal opp
                 bool req_way = requestOnTheWay(queue, BUTTON_HALL_UP, floor_sensor, size);
-                printf("sdaskd value : %d \n", req_way);
                 if (req_way || req_way_cab) {
-                    printf("sdaskd value : %d \n", req_way);
                     removeFloorRequest(queue, size, *current_floor);
                     *state = AT_FLOOR;
                     break;  
                 }
             }
             if (direction < 0) {
-                printf("Direction value : %d \n", direction);
-                // Sjekk om noen skal opp
                 bool req_way = requestOnTheWay(queue, BUTTON_HALL_DOWN, floor_sensor, size);
-                printf("sdaskd value : %d \n", req_way);
                 if (req_way || req_way_cab) {
-                    printf("sdaskd value : %d \n", req_way);
                     removeFloorRequest(queue, size, *current_floor);
                     *state = AT_FLOOR;
                     break;  
                 }
             }
 
-            if (floor == *current_floor) {
-                printf("Current floor %d \n", *current_floor);
+            if (floor == *current_floor && *between_floors == false) {
                 removeFloorRequest(queue, size, *current_floor);
                 *state = AT_FLOOR;
                 break;
             }
-            if (floor < *current_floor) {
+            if (floor == *current_floor && *between_floors == true) {
+                printf("Direction %d \n", *dir);
+                printf("Between floors MOVE %d \n", *between_floors);
+                if (floor_sensor == floor) {
+                    *between_floors = false;
+                }
+
+                
+                if (*dir == UP) {
+                    elevio_motorDirection(DIRN_DOWN);
+
+                } else {
+                    elevio_motorDirection(DIRN_UP);
+
+                }
+                //printf("Between floors %d \n", *between_floors);
+                break;
+            }
+            if (floor < *current_floor && *between_floors == false) {
                 elevio_motorDirection(DIRN_DOWN);
+                *dir = DOWN;
             } else {
                 elevio_motorDirection(DIRN_UP);
+                *dir = UP;
             }
-
+            
+            *between_floors = false;
             break;
         }
         case AT_FLOOR: {

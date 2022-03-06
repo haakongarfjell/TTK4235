@@ -15,6 +15,11 @@ typedef struct {
     int floor;
 } Request;       // Navn: request
 
+typedef enum {
+    UP      = 0,
+    DOWN    = 1
+} Direction;
+
 Request buttonCheck();
 
 void leftShiftQueue(Request* queue_ptr, int size);

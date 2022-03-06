@@ -28,6 +28,8 @@ int main(){
     State2 s = INIT;
     start_init();
     int current_floor = 0;
+    bool between_floors = false;
+    Direction dir = DOWN;
     int doorFlag = 0;
     int stop_flag = 0;
 
@@ -47,21 +49,24 @@ int main(){
         
 
         if (s == STOP) {
+            //current_floor = elevio_floorSensor();
             elevio_motorDirection(DIRN_STOP);
-            resetQueue(queue, g_queue_size);
+            resetQueue(&queue, g_queue_size);
+
                 for(int f = 0; f < N_FLOORS; f++){
                     for(int b = 0; b < N_BUTTONS; b++){
                         elevio_buttonLamp(f, b, 0);
                     }
                 }
+
             if (elevio_floorSensor() != -1) {
                 elevio_doorOpenLamp(1);
             } else {
                 elevio_doorOpenLamp(0);
             }
-            requestLights(&queue, g_queue_size);
+            //requestLights(&queue, g_queue_size); ??
             while(1) {
-                requestLights(&queue, g_queue_size);
+                //requestLights(&queue, g_queue_size); ??
                 int stop_button = elevio_stopButton();
                 if (stop_button == 1) {
                     elevio_stopLamp(1);
@@ -73,6 +78,8 @@ int main(){
                     stop_flag = 0;
                     break;
                 } else {
+                    between_floors = true;
+                    printf("Between floors STOP %d \n", between_floors);
                     stop_flag = 0;
                     s = INIT;
                     break;
@@ -119,10 +126,10 @@ int main(){
         }
         
 
-        printQueue(&queue, g_queue_size);
+        //printQueue(&queue, g_queue_size);
 
         //if (doorFlag == 0) {
-        runStateMachine2(&queue, g_queue_size, &s, &current_floor, &doorFlag, &stop_flag);
+        runStateMachine2(&queue, g_queue_size, &s, &current_floor, &doorFlag, &stop_flag, &between_floors, &dir);
         //}
         
         Request request = buttonCheck();

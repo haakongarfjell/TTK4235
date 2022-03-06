@@ -175,12 +175,13 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
         }
         case MOVE: {
             int direction = floor-*current_floor;
+            bool req_way_cab = requestOnTheWay(queue, BUTTON_CAB, *current_floor, size);   // Skal dette være en funksjonalitet
             if (direction > 0) {
                 printf("Direction value : %d \n", direction);
                 // Sjekk om noen skal opp
                 bool req_way = requestOnTheWay(queue, BUTTON_HALL_UP, *current_floor, size);
                 printf("sdaskd value : %d \n", req_way);
-                if (req_way) {
+                if (req_way || req_way_cab) {
                     printf("sdaskd value : %d \n", req_way);
                     removeFloorRequest(queue, size, *current_floor);
                     *state = AT_FLOOR;
@@ -192,7 +193,7 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
                 // Sjekk om noen skal opp
                 bool req_way = requestOnTheWay(queue, BUTTON_HALL_DOWN, *current_floor, size);
                 printf("sdaskd value : %d \n", req_way);
-                if (req_way) {
+                if (req_way || req_way_cab) {
                     printf("sdaskd value : %d \n", req_way);
                     removeFloorRequest(queue, size, *current_floor);
                     *state = AT_FLOOR;

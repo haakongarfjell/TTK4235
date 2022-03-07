@@ -19,7 +19,6 @@ Request buttonCheck() {
     return tempRequest;
 }
 
-
 void leftShiftQueue(Request* queue_ptr, int size) {    // bytt navn til queue_ptr
 
     Request *queue_ptr_next = queue_ptr;
@@ -116,9 +115,8 @@ int numRequestsAtFloor(Request* queue_ptr, int floor) {
     return counter;
 }
 
-
 // Må legges inn flere steder for å oppdateres ofte nok
-void requestLights(Request* queue_ptr, int size) {
+void queueLightsOn(Request* queue_ptr, int size) {
     
     for (int i = 0; i < size; i++) {
         Request req = *queue_ptr;
@@ -139,7 +137,6 @@ void removeFloorRequest(Request* queue_ptr, int size, int floor) {
         }
         queue_ptr++;
     }
-
 }
 
 bool requestOnTheWay(Request* queue_ptr, ButtonType direction, int floor, int size) {
@@ -152,4 +149,13 @@ bool requestOnTheWay(Request* queue_ptr, ButtonType direction, int floor, int si
         queue_ptr++;
     }
     return false;
+}
+
+void allQueueLightsOff() {
+   
+    for(int f = 0; f < N_FLOORS; f++){
+        for(int b = 0; b < N_BUTTONS; b++){
+            elevio_buttonLamp(f, b, 0);
+        }
+    }
 }

@@ -1,160 +1,139 @@
 #include "state_machine.h"
 
+void initHandler(Request* queue, int size, State* state) {
+    elevio_doorOpenLamp(0); 
+    if (checkNoRequests(queue, size) != 1) {
+         *state = MOVE;
+   } 
+}
 
+void atFloorHandler(int current_floor, State *state) {
 
-// void runStateMachine(Request* queue, int size, State* state) {
+    elevio_motorDirection(DIRN_STOP);
+    elevio_buttonLamp(current_floor, BUTTON_CAB, 0);
+    elevio_buttonLamp(current_floor, BUTTON_HALL_DOWN, 0);
+    elevio_buttonLamp(current_floor, BUTTON_HALL_UP, 0);
+    elevio_floorIndicator(current_floor);
+    elevio_stopLamp(0);
+    *state = DOOR;
+}
 
-//     printf("Stopbutton: %d \n", elevio_stopButton());
+void stopHandler(Request* queue, int size, State* state, bool* between_floors) {
+    elevio_stopLamp(1);
+    elevio_motorDirection(DIRN_STOP);
+    resetQueue(queue, size);
+    allQueueLightsOff();
 
+    if (elevio_floorSensor() != -1) {
+        elevio_doorOpenLamp(1);
+    } else {
+        elevio_doorOpenLamp(0);
+    }
 
-//     if (checkNoRequests(queue,size)) {
-//         *state = IDLE;
-//     }
-//     if (elevio_stopButton()) {
-//         *state = STOP;
-//     }
+    while(1) {
+        if (elevio_stopButton()) {
+            elevio_stopLamp(1);
+            continue;
+        } 
+        elevio_stopLamp(0);
+        if (elevio_floorSensor() != -1) {
+            *state = DOOR;
+            return;
+        } else {
+            *between_floors = true;
+            *state = INIT;
+            return;
+        }
+    }
+}
+
+void doorHandler(Request* queue, int size, State* state) {
+    elevio_doorOpenLamp(1);
+    time_t initSeconds;
+    initSeconds = time(NULL);
+    while (1) {
+        queueLightsOn(queue, size);
+        if (elevio_stopButton()) {
+            return;
+        }
+
+        Request request = buttonCheck();
+        addToQueue(queue, request, size);
+        removeDuplicates(queue, size);
+
+        if (elevio_obstruction()) {
+            initSeconds = time(NULL);
+            continue;
+        }
+        
+        time_t seconds;
+        seconds = time(NULL);
+        
+        if ((seconds - initSeconds) == 3) {
+            elevio_doorOpenLamp(0);
+            *state = INIT;
+            return;
+        }
+    }
+}
+
+void moveHandler(Request* queue, int size, State* state, int* current_floor, int floor, bool* between_floors, Direction* dir) {
+    int direction = floor-*current_floor;
+    int floor_sensor = elevio_floorSensor();
+    bool req_way_cab = requestOnTheWay(queue, BUTTON_CAB, floor_sensor, size); 
+    if (direction > 0) {
+        bool req_way = requestOnTheWay(queue, BUTTON_HALL_UP, floor_sensor, size);
+        if (req_way || req_way_cab) {
+            removeFloorRequest(queue, size, *current_floor);
+            *state = AT_FLOOR;
+            return;  
+        }
+    }
+    if (direction < 0) {
+        bool req_way = requestOnTheWay(queue, BUTTON_HALL_DOWN, floor_sensor, size);
+        if (req_way || req_way_cab) {
+            removeFloorRequest(queue, size, *current_floor);
+            *state = AT_FLOOR;
+            return;  
+        }
+    }
+    if (floor == *current_floor && *between_floors == false) {
+        removeFloorRequest(queue, size, *current_floor);
+        *state = AT_FLOOR;
+        return;
+    }
+    if (floor == *current_floor && *between_floors == true) {
+        if (floor_sensor == floor) {
+            *between_floors = false;
+        }
+        if (*dir == UP) {
+            elevio_motorDirection(DIRN_DOWN);
+
+        } else {
+            elevio_motorDirection(DIRN_UP);
+
+        }
+        return;
+    }
+    if (floor < *current_floor && *between_floors == false) {
+        elevio_motorDirection(DIRN_DOWN);
+        *dir = DOWN;
+    } else {
+        elevio_motorDirection(DIRN_UP);
+        *dir = UP;
+    }
     
-//     Request firstInQueue = *queue;
-//     ButtonType buttonType = firstInQueue.buttonType;
-//     int floor = firstInQueue.floor;
-//     int current_floor = elevio_floorSensor();
+    *between_floors = false;
+}
 
-//     if (floor == -1 && checkNoRequests(queue, size) == 0) {
-//         leftShiftQueue(queue, size);
-//         return;
-//     }
-
-//     switch (*state)
-//     {
-//     case IDLE: {
-//         printf("You are now IDLE \n");
-//         elevio_motorDirection(DIRN_STOP);
-//         printf("Buttontype: %d \n", buttonType);
-//         printf("CheckReq: %d \n", checkNoRequests(queue,size));
-
-
-//         if (checkNoRequests(queue,size)) {
-//             *state = IDLE;
-//             break;
-//         }
-//         if (buttonType == BUTTON_HALL_UP) {
-//             if (floor > current_floor) {
-//                 *state = UP;
-//             } else {
-//                 *state = DOWN;
-//             }
-//             break;
-//         }
-//         if (buttonType == BUTTON_HALL_DOWN) {
-//             if (floor < current_floor) {
-//                 *state = UP;
-//             } else {
-//                 *state = DOWN;
-//             }
-//             break;
-//         }
-//         if (buttonType == BUTTON_CAB) {
-//             if (floor > current_floor) {
-//                 *state = UP;
-//                 break;
-//             }
-//             if (floor < current_floor) {
-//                 *state = DOWN;
-//                 break;
-//             }
-//             // else {
-//             //     *state = AT_FLOOR;
-//             //     break;
-//         }
-//         break;
-//     }
-//     case STOP: {
-//         printf("State : STOP \n");
-//         elevio_motorDirection(DIRN_STOP);
-//         resetQueue(queue, size);
-//         elevio_stopLamp(1);
-//         //printf("StopButton2 : %d", elevio_stopButton());
-//         if (elevio_stopButton()) {
-//             if (current_floor == -1) {
-//                 break;
-//             }
-//             doorOpen();
-//             break;
-//         } 
-//         else {
-//             elevio_stopLamp(0);
-//             if (current_floor == -1) {
-//                 *state = IDLE;
-//                 doorClose();
-//                 break;
-//             }
-//             doorWait();
-//             *state = IDLE;
-//             break;
-//         }
-//         // Stop lys knapp
-//         // Queue reset
-//         // Hvis i en etasje - åpne dør
-//         // Heisen skal stoppe
-//         // Hvis knapp - gå til UP/DOWN
-//     }
-//     case UP: {
-//         printf("State : UP \n");
-//         if (current_floor == floor) {
-//             *state = AT_FLOOR;
-//             break;
-//         }
-//         elevio_motorDirection(DIRN_UP);
-//         elevio_doorOpenLamp(0);
-//         break;
-//     }
-//     case DOWN: {
-//         printf("State : DOWN \n");
-//         if (current_floor == floor) {
-//             *state = AT_FLOOR;
-//             break;
-//         }
-//         elevio_motorDirection(DIRN_DOWN);
-//         elevio_doorOpenLamp(0);
-//         break;
-//     }
-//     case AT_FLOOR: {
-//         printf("State : AT_FLOOR \n");
-//         if (floor == -1 ) {
-//             *state = IDLE;
-//             break;
-//         }
-//         elevio_motorDirection(DIRN_STOP);
-//         doorWait();     // Evt. doorOpen()
-//         leftShiftQueue(queue, size);
-//         // leftshift
-//         // dør greier
-//         // sjekk queue[0]
-//         *state = IDLE;
-//         break;
-//     }
-//     default: {
-//         // udefinert atm
-//         printf("Feil \n");
-//         break;
-//     }
-
-//     }
-
-
-// }
-
-
-
-
-void runStateMachine2(Request* queue, int size, State2* state, int* current_floor, int* doorFlag, int* stop_flag, bool* between_floors, Direction* dir) {
+void runStateMachine(Request* queue, int size, State* state, int* current_floor, bool* between_floors, Direction* dir) {
     
     Request firstInQueue = *queue;
     ButtonType buttonType = firstInQueue.buttonType;
     int floor = firstInQueue.floor;
     int floor_sensor = elevio_floorSensor();
     
-    requestLights(queue, size);
+    queueLightsOn(queue, size);
 
     if (floor_sensor != -1) {
         *current_floor = floor_sensor;
@@ -165,14 +144,14 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
         return;
     }
 
+    if (elevio_stopButton()) {
+        *state = STOP;
+    }
+
     switch(*state)
     {
         case INIT: {
-            elevio_doorOpenLamp(0);
-            //printf("State : INIT \n");
-            if (checkNoRequests(queue, size) != 1) {
-                *state = MOVE;
-            }
+            initHandler(queue, size, state);
             break;
         }
         case MOVE: {
@@ -194,20 +173,15 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
                     break;  
                 }
             }
-
             if (floor == *current_floor && *between_floors == false) {
                 removeFloorRequest(queue, size, *current_floor);
                 *state = AT_FLOOR;
                 break;
             }
             if (floor == *current_floor && *between_floors == true) {
-                printf("Direction %d \n", *dir);
-                printf("Between floors MOVE %d \n", *between_floors);
                 if (floor_sensor == floor) {
                     *between_floors = false;
                 }
-
-                
                 if (*dir == UP) {
                     elevio_motorDirection(DIRN_DOWN);
 
@@ -215,7 +189,6 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
                     elevio_motorDirection(DIRN_UP);
 
                 }
-                //printf("Between floors %d \n", *between_floors);
                 break;
             }
             if (floor < *current_floor && *between_floors == false) {
@@ -227,27 +200,19 @@ void runStateMachine2(Request* queue, int size, State2* state, int* current_floo
             }
             
             *between_floors = false;
+            //moveHandler(queue, size, state, current_floor, floor, between_floors, dir);
             break;
         }
         case AT_FLOOR: {
-            elevio_motorDirection(DIRN_STOP);
-            elevio_buttonLamp(*current_floor, BUTTON_CAB, 0);
-            elevio_buttonLamp(*current_floor, BUTTON_HALL_DOWN, 0);
-            elevio_buttonLamp(*current_floor, BUTTON_HALL_UP, 0);
-            elevio_floorIndicator(*current_floor);
-            //printf("State : AT_FLOOR \n");
-            elevio_stopLamp(0);
-            *state = DOOR;
+            atFloorHandler(*current_floor, state);
             break;
         }
         case STOP: {
-            elevio_stopLamp(1);
-            *stop_flag = 1;
+            stopHandler(queue, size, state, between_floors);
             break;
         }
         case DOOR: {
-            elevio_doorOpenLamp(1);
-            *doorFlag = 1;
+            doorHandler(queue, size, state);
             break;
         }
         default: {

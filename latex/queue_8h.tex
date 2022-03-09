@@ -1,0 +1,311 @@
+\hypertarget{queue_8h}{}\doxysection{source/driver/queue.h File Reference}
+\label{queue_8h}\index{source/driver/queue.h@{source/driver/queue.h}}
+
+
+This is a library to create and operate on a queue, an array of requests. Most of the functions take in a pointer to the first request in the queue and is used to operate on the elements of the queue.  
+
+
+{\ttfamily \#include \char`\"{}elevio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}con\+\_\+load.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for queue.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structRequest}{Request}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{queue_8h_a224b9163917ac32fc95a60d8c1eec3aa}\label{queue_8h_a224b9163917ac32fc95a60d8c1eec3aa}} 
+enum {\bfseries Direction} \{ {\bfseries UP} = 0, 
+{\bfseries D\+O\+WN} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structRequest}{Request}} \mbox{\hyperlink{queue_8h_a338c3357ac57361faf5bb398737e7495}{button\+Check}} ()
+\begin{DoxyCompactList}\small\item\em Checks if a button has been pressed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_a8f1e96483b3db062bd9b82fcdeb17cde}{left\+Shift\+Queue}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int size)
+\begin{DoxyCompactList}\small\item\em Used to left shift the queue when a \mbox{\hyperlink{structRequest}{Request}} has been handled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{queue_8h_aaa239b24bc481b306c37a270e266a204}{check\+If\+In\+Queue}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, \mbox{\hyperlink{structRequest}{Request}} element, int size)
+\begin{DoxyCompactList}\small\item\em Checks if an {\ttfamily element} of is in the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_a9a0a14a4ecdf21bd8b3237a84006a627}{add\+To\+Queue}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, \mbox{\hyperlink{structRequest}{Request}} element, int size)
+\begin{DoxyCompactList}\small\item\em Adds an {\ttfamily element} to the back of the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_a4e6a7bdfbfedcdc60a28a34dd056010e}{reset\+Queue}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int size)
+\begin{DoxyCompactList}\small\item\em Resets all the elements of the queue. All requests will have button\+Type set to B\+U\+T\+T\+O\+N\+\_\+\+N\+O\+NE and floor to -\/1. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{queue_8h_a1468f50893790ec6fddb80151ea5002d}{check\+No\+Requests}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int size)
+\begin{DoxyCompactList}\small\item\em Checks if the queue is empty, if there are no requests. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{queue_8h_a4696eb4faa142e84032e1e17ebf2e600}\label{queue_8h_a4696eb4faa142e84032e1e17ebf2e600}} 
+void {\bfseries print\+Queue} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int size)
+\item 
+void \mbox{\hyperlink{queue_8h_a87ff9cb7a1f23023f259f4c486c60cf7}{remove\+Duplicates}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int size)
+\begin{DoxyCompactList}\small\item\em Checks if the queue containes any dublicate requests, and removes all instances except one. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{queue_8h_a45e0ab4bcccbfb086fa36826c1e1f5ae}\label{queue_8h_a45e0ab4bcccbfb086fa36826c1e1f5ae}} 
+int {\bfseries num\+Requests\+At\+Floor} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int floor)
+\item 
+void \mbox{\hyperlink{queue_8h_a48aadc038d17c5ea2e29cf0708823925}{queue\+Lights\+On}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int size)
+\begin{DoxyCompactList}\small\item\em Turns on the button lamps of all of the requests in the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_ac3a9d57b967f13f66a13b3ce9669609e}{remove\+Floor\+Request}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int size, int floor)
+\begin{DoxyCompactList}\small\item\em Removes all the requests on a given {\ttfamily floor}. All requests at this {\ttfamily floor} will have button\+Type set to B\+U\+T\+T\+O\+N\+\_\+\+N\+O\+NE and floor set to -\/1. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{queue_8h_a5db215f7a6b628119ea8c7608ef3bb0d}{request\+On\+The\+Way}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, Button\+Type direction, int floor, int size)
+\begin{DoxyCompactList}\small\item\em Checks if there are any requests the elevator can pick up on in the current direction. For example, if {\ttfamily direction} is UP and there is a request in the queue with button\+Type = B\+U\+T\+T\+O\+N\+\_\+\+H\+A\+L\+L\+\_\+\+UP. ??? \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{queue_8h_a987f814b3294f5fb9754bcc69ebea9cd}{all\+Queue\+Lights\+Off}} ()
+\begin{DoxyCompactList}\small\item\em Turns off all button lights. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is a library to create and operate on a queue, an array of requests. Most of the functions take in a pointer to the first request in the queue and is used to operate on the elements of the queue. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{queue_8h_a9a0a14a4ecdf21bd8b3237a84006a627}\label{queue_8h_a9a0a14a4ecdf21bd8b3237a84006a627}} 
+\index{queue.h@{queue.h}!addToQueue@{addToQueue}}
+\index{addToQueue@{addToQueue}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{addToQueue()}{addToQueue()}}
+{\footnotesize\ttfamily void add\+To\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue\+\_\+ptr,  }\item[{\mbox{\hyperlink{structRequest}{Request}}}]{element,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Adds an {\ttfamily element} to the back of the queue. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em queue\+\_\+ptr} & Pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em element} & Element to add to queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & Size of the queue. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 46 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a987f814b3294f5fb9754bcc69ebea9cd}\label{queue_8h_a987f814b3294f5fb9754bcc69ebea9cd}} 
+\index{queue.h@{queue.h}!allQueueLightsOff@{allQueueLightsOff}}
+\index{allQueueLightsOff@{allQueueLightsOff}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{allQueueLightsOff()}{allQueueLightsOff()}}
+{\footnotesize\ttfamily void all\+Queue\+Lights\+Off (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Turns off all button lights. 
+
+
+
+Definition at line 154 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a338c3357ac57361faf5bb398737e7495}\label{queue_8h_a338c3357ac57361faf5bb398737e7495}} 
+\index{queue.h@{queue.h}!buttonCheck@{buttonCheck}}
+\index{buttonCheck@{buttonCheck}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{buttonCheck()}{buttonCheck()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRequest}{Request}} button\+Check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if a button has been pressed. 
+
+\begin{DoxyReturn}{Returns}
+a \mbox{\hyperlink{structRequest}{Request}} with button\+Type and floor as member variables. 
+\end{DoxyReturn}
+
+
+Definition at line 3 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_aaa239b24bc481b306c37a270e266a204}\label{queue_8h_aaa239b24bc481b306c37a270e266a204}} 
+\index{queue.h@{queue.h}!checkIfInQueue@{checkIfInQueue}}
+\index{checkIfInQueue@{checkIfInQueue}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{checkIfInQueue()}{checkIfInQueue()}}
+{\footnotesize\ttfamily bool check\+If\+In\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue\+\_\+ptr,  }\item[{\mbox{\hyperlink{structRequest}{Request}}}]{element,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Checks if an {\ttfamily element} of is in the queue. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em queue\+\_\+ptr} & Pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em element} & Element to check if is in the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & Size of the queue. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if {\ttfamily element} is in the queue. 
+
+false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 36 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a1468f50893790ec6fddb80151ea5002d}\label{queue_8h_a1468f50893790ec6fddb80151ea5002d}} 
+\index{queue.h@{queue.h}!checkNoRequests@{checkNoRequests}}
+\index{checkNoRequests@{checkNoRequests}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{checkNoRequests()}{checkNoRequests()}}
+{\footnotesize\ttfamily bool check\+No\+Requests (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue\+\_\+ptr,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Checks if the queue is empty, if there are no requests. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em queue\+\_\+ptr} & Pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & Size of the queue. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the queue has no requests. 
+
+false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 66 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a8f1e96483b3db062bd9b82fcdeb17cde}\label{queue_8h_a8f1e96483b3db062bd9b82fcdeb17cde}} 
+\index{queue.h@{queue.h}!leftShiftQueue@{leftShiftQueue}}
+\index{leftShiftQueue@{leftShiftQueue}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{leftShiftQueue()}{leftShiftQueue()}}
+{\footnotesize\ttfamily void left\+Shift\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue\+\_\+ptr,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Used to left shift the queue when a \mbox{\hyperlink{structRequest}{Request}} has been handled. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em queue\+\_\+ptr} & Pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & Size of the queue. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a48aadc038d17c5ea2e29cf0708823925}\label{queue_8h_a48aadc038d17c5ea2e29cf0708823925}} 
+\index{queue.h@{queue.h}!queueLightsOn@{queueLightsOn}}
+\index{queueLightsOn@{queueLightsOn}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{queueLightsOn()}{queueLightsOn()}}
+{\footnotesize\ttfamily void queue\+Lights\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue\+\_\+ptr,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Turns on the button lamps of all of the requests in the queue. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em queue\+\_\+ptr} & Pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & Size of the queue. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 119 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a87ff9cb7a1f23023f259f4c486c60cf7}\label{queue_8h_a87ff9cb7a1f23023f259f4c486c60cf7}} 
+\index{queue.h@{queue.h}!removeDuplicates@{removeDuplicates}}
+\index{removeDuplicates@{removeDuplicates}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{removeDuplicates()}{removeDuplicates()}}
+{\footnotesize\ttfamily void remove\+Duplicates (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue\+\_\+ptr,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Checks if the queue containes any dublicate requests, and removes all instances except one. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em queue\+\_\+ptr} & Pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & Size of the queue. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 87 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_ac3a9d57b967f13f66a13b3ce9669609e}\label{queue_8h_ac3a9d57b967f13f66a13b3ce9669609e}} 
+\index{queue.h@{queue.h}!removeFloorRequest@{removeFloorRequest}}
+\index{removeFloorRequest@{removeFloorRequest}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{removeFloorRequest()}{removeFloorRequest()}}
+{\footnotesize\ttfamily void remove\+Floor\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue\+\_\+ptr,  }\item[{int}]{size,  }\item[{int}]{floor }\end{DoxyParamCaption})}
+
+
+
+Removes all the requests on a given {\ttfamily floor}. All requests at this {\ttfamily floor} will have button\+Type set to B\+U\+T\+T\+O\+N\+\_\+\+N\+O\+NE and floor set to -\/1. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em queue\+\_\+ptr} & Pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & Size of the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em floor} & Floor to remove requests at. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 130 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a5db215f7a6b628119ea8c7608ef3bb0d}\label{queue_8h_a5db215f7a6b628119ea8c7608ef3bb0d}} 
+\index{queue.h@{queue.h}!requestOnTheWay@{requestOnTheWay}}
+\index{requestOnTheWay@{requestOnTheWay}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{requestOnTheWay()}{requestOnTheWay()}}
+{\footnotesize\ttfamily bool request\+On\+The\+Way (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue\+\_\+ptr,  }\item[{Button\+Type}]{direction,  }\item[{int}]{floor,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Checks if there are any requests the elevator can pick up on in the current direction. For example, if {\ttfamily direction} is UP and there is a request in the queue with button\+Type = B\+U\+T\+T\+O\+N\+\_\+\+H\+A\+L\+L\+\_\+\+UP. ??? 
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue\+\_\+ptr} & \\
+\hline
+{\em direction} & \\
+\hline
+{\em floor} & \\
+\hline
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 142 of file queue.\+c.
+
+\mbox{\Hypertarget{queue_8h_a4e6a7bdfbfedcdc60a28a34dd056010e}\label{queue_8h_a4e6a7bdfbfedcdc60a28a34dd056010e}} 
+\index{queue.h@{queue.h}!resetQueue@{resetQueue}}
+\index{resetQueue@{resetQueue}!queue.h@{queue.h}}
+\doxysubsubsection{\texorpdfstring{resetQueue()}{resetQueue()}}
+{\footnotesize\ttfamily void reset\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue\+\_\+ptr,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Resets all the elements of the queue. All requests will have button\+Type set to B\+U\+T\+T\+O\+N\+\_\+\+N\+O\+NE and floor to -\/1. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em queue\+\_\+ptr} & Pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & Size of the queue. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 58 of file queue.\+c.
+

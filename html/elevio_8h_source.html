@@ -73,45 +73,57 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define N_FLOORS 4</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> { </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    DIRN_DOWN   = -1,</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    DIRN_STOP   = 0,</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    DIRN_UP     = 1</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;} MotorDirection;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> { </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    DIRN_DOWN   = -1,</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    DIRN_STOP   = 0,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    DIRN_UP     = 1</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;} MotorDirection;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define N_BUTTONS 3</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> { </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    BUTTON_HALL_UP      = 0,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    BUTTON_HALL_DOWN    = 1,</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    BUTTON_CAB          = 2,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    BUTTON_NONE         = 3</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;} ButtonType;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#acec5e6d14134b881216887fe15aca830">elevio_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#ab2e6dcf199387c1dd6f78e2bf6fff56e">elevio_motorDirection</a>(MotorDirection dirn);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a>(<span class="keywordtype">int</span> floor, ButtonType button, <span class="keywordtype">int</span> value);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define N_BUTTONS 3</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> { </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    BUTTON_HALL_UP      = 0,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    BUTTON_HALL_DOWN    = 1,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    BUTTON_CAB          = 2,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    BUTTON_NONE         = 3</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} ButtonType;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#acec5e6d14134b881216887fe15aca830">elevio_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#ab2e6dcf199387c1dd6f78e2bf6fff56e">elevio_motorDirection</a>(MotorDirection dirn);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a>(<span class="keywordtype">int</span> floor, ButtonType button, <span class="keywordtype">int</span> value);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#a184a3b9bd68d9f38ada735288059b823">elevio_floorIndicator</a>(<span class="keywordtype">int</span> floor);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#a184a3b9bd68d9f38ada735288059b823">elevio_floorIndicator</a>(<span class="keywordtype">int</span> floor);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#a7784247f816e8beee3a0538f070d9357">elevio_doorOpenLamp</a>(<span class="keywordtype">int</span> value);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> elevio_stopLamp(<span class="keywordtype">int</span> value);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#a7784247f816e8beee3a0538f070d9357">elevio_doorOpenLamp</a>(<span class="keywordtype">int</span> value);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">int</span> elevio_callButton(<span class="keywordtype">int</span> floor, ButtonType button);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">int</span> elevio_floorSensor(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">int</span> elevio_stopButton(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">int</span> elevio_obstruction(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#ac0411a180087d6ac13a3d97eda809ba0">elevio_stopLamp</a>(<span class="keywordtype">int</span> value);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">int</span> <a class="code" href="elevio_8h.html#a2485d7d293f03756a852ee1f796b9e1f">elevio_callButton</a>(<span class="keywordtype">int</span> floor, ButtonType button);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">int</span> <a class="code" href="elevio_8h.html#a6c30a3c0241ebf37a9014679e1bf288d">elevio_floorSensor</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">int</span> <a class="code" href="elevio_8h.html#a73cf5844bdae806dc8d0afa3e0edab70">elevio_stopButton</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keywordtype">int</span> <a class="code" href="elevio_8h.html#a96c87bf2164a6aa64d116f6137b8ee78">elevio_obstruction</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aelevio_8h_html_a7784247f816e8beee3a0538f070d9357"><div class="ttname"><a href="elevio_8h.html#a7784247f816e8beee3a0538f070d9357">elevio_doorOpenLamp</a></div><div class="ttdeci">void elevio_doorOpenLamp(int value)</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00076">elevio.c:76</a></div></div>
-<div class="ttc" id="aelevio_8h_html_a182079eb4c29f71ff3b5049a2fd082a3"><div class="ttname"><a href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a></div><div class="ttdeci">void elevio_buttonLamp(int floor, ButtonType button, int value)</div><div class="ttdoc">Sets lamp on a given floor and button to value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00054">elevio.c:54</a></div></div>
-<div class="ttc" id="aelevio_8h_html_a184a3b9bd68d9f38ada735288059b823"><div class="ttname"><a href="elevio_8h.html#a184a3b9bd68d9f38ada735288059b823">elevio_floorIndicator</a></div><div class="ttdeci">void elevio_floorIndicator(int floor)</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00066">elevio.c:66</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a73cf5844bdae806dc8d0afa3e0edab70"><div class="ttname"><a href="elevio_8h.html#a73cf5844bdae806dc8d0afa3e0edab70">elevio_stopButton</a></div><div class="ttdeci">int elevio_stopButton(void)</div><div class="ttdoc">Checks if the emergency stop button has been pressed.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00112">elevio.c:112</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a7784247f816e8beee3a0538f070d9357"><div class="ttname"><a href="elevio_8h.html#a7784247f816e8beee3a0538f070d9357">elevio_doorOpenLamp</a></div><div class="ttdeci">void elevio_doorOpenLamp(int value)</div><div class="ttdoc">Sets door lamp to given value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00076">elevio.c:76</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a6c30a3c0241ebf37a9014679e1bf288d"><div class="ttname"><a href="elevio_8h.html#a6c30a3c0241ebf37a9014679e1bf288d">elevio_floorSensor</a></div><div class="ttdeci">int elevio_floorSensor(void)</div><div class="ttdoc">Reads from the floor sensor and returns the position of the elevator.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00102">elevio.c:102</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a182079eb4c29f71ff3b5049a2fd082a3"><div class="ttname"><a href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a></div><div class="ttdeci">void elevio_buttonLamp(int floor, ButtonType button, int value)</div><div class="ttdoc">Sets lamp on a given floor and button to given value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00054">elevio.c:54</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a184a3b9bd68d9f38ada735288059b823"><div class="ttname"><a href="elevio_8h.html#a184a3b9bd68d9f38ada735288059b823">elevio_floorIndicator</a></div><div class="ttdeci">void elevio_floorIndicator(int floor)</div><div class="ttdoc">Turns on lamp at a given floor.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00066">elevio.c:66</a></div></div>
+<div class="ttc" id="aelevio_8h_html_ac0411a180087d6ac13a3d97eda809ba0"><div class="ttname"><a href="elevio_8h.html#ac0411a180087d6ac13a3d97eda809ba0">elevio_stopLamp</a></div><div class="ttdeci">void elevio_stopLamp(int value)</div><div class="ttdoc">Sets stop lamp to given value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00083">elevio.c:83</a></div></div>
 <div class="ttc" id="aelevio_8h_html_ab2e6dcf199387c1dd6f78e2bf6fff56e"><div class="ttname"><a href="elevio_8h.html#ab2e6dcf199387c1dd6f78e2bf6fff56e">elevio_motorDirection</a></div><div class="ttdeci">void elevio_motorDirection(MotorDirection dirn)</div><div class="ttdoc">Sets the motor to drive the elecator in a given direction.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00047">elevio.c:47</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a2485d7d293f03756a852ee1f796b9e1f"><div class="ttname"><a href="elevio_8h.html#a2485d7d293f03756a852ee1f796b9e1f">elevio_callButton</a></div><div class="ttdeci">int elevio_callButton(int floor, ButtonType button)</div><div class="ttdoc">Checks if a button has been pressed on a given floor.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00092">elevio.c:92</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a96c87bf2164a6aa64d116f6137b8ee78"><div class="ttname"><a href="elevio_8h.html#a96c87bf2164a6aa64d116f6137b8ee78">elevio_obstruction</a></div><div class="ttdeci">int elevio_obstruction(void)</div><div class="ttdoc">Checks if obstruction switch is activated.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00122">elevio.c:122</a></div></div>
 <div class="ttc" id="aelevio_8h_html_acec5e6d14134b881216887fe15aca830"><div class="ttname"><a href="elevio_8h.html#acec5e6d14134b881216887fe15aca830">elevio_init</a></div><div class="ttdeci">void elevio_init(void)</div><div class="ttdoc">Called to set up communication between the microcontroller used and the physical elevator.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00015">elevio.c:15</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

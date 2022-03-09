@@ -151,7 +151,7 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> elevio_stopLamp(<span class="keywordtype">int</span> value){</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="elevio_8h.html#ac0411a180087d6ac13a3d97eda809ba0">   83</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="elevio_8h.html#ac0411a180087d6ac13a3d97eda809ba0">elevio_stopLamp</a>(<span class="keywordtype">int</span> value){</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    pthread_mutex_lock(&amp;sockmtx);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    send(sockfd, (<span class="keywordtype">char</span>[4]){5, value}, 4, 0);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    pthread_mutex_unlock(&amp;sockmtx);</div>
@@ -160,7 +160,7 @@ $(function() {
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">int</span> elevio_callButton(<span class="keywordtype">int</span> floor, ButtonType button){</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="elevio_8h.html#a2485d7d293f03756a852ee1f796b9e1f">   92</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="elevio_8h.html#a2485d7d293f03756a852ee1f796b9e1f">elevio_callButton</a>(<span class="keywordtype">int</span> floor, ButtonType button){</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    pthread_mutex_lock(&amp;sockmtx);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    send(sockfd, (<span class="keywordtype">char</span>[4]){6, button, floor}, 4, 0);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">char</span> buf[4];</div>
@@ -170,7 +170,7 @@ $(function() {
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keywordtype">int</span> elevio_floorSensor(<span class="keywordtype">void</span>){</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="elevio_8h.html#a6c30a3c0241ebf37a9014679e1bf288d">  102</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="elevio_8h.html#a6c30a3c0241ebf37a9014679e1bf288d">elevio_floorSensor</a>(<span class="keywordtype">void</span>){</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    pthread_mutex_lock(&amp;sockmtx);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    send(sockfd, (<span class="keywordtype">char</span>[4]){7}, 4, 0);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">char</span> buf[4];</div>
@@ -180,7 +180,7 @@ $(function() {
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keywordtype">int</span> elevio_stopButton(<span class="keywordtype">void</span>){</div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="elevio_8h.html#a73cf5844bdae806dc8d0afa3e0edab70">  112</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="elevio_8h.html#a73cf5844bdae806dc8d0afa3e0edab70">elevio_stopButton</a>(<span class="keywordtype">void</span>){</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    pthread_mutex_lock(&amp;sockmtx);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    send(sockfd, (<span class="keywordtype">char</span>[4]){8}, 4, 0);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">char</span> buf[4];</div>
@@ -190,7 +190,7 @@ $(function() {
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keywordtype">int</span> elevio_obstruction(<span class="keywordtype">void</span>){</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="elevio_8h.html#a96c87bf2164a6aa64d116f6137b8ee78">  122</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="elevio_8h.html#a96c87bf2164a6aa64d116f6137b8ee78">elevio_obstruction</a>(<span class="keywordtype">void</span>){</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    pthread_mutex_lock(&amp;sockmtx);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    send(sockfd, (<span class="keywordtype">char</span>[4]){9}, 4, 0);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">char</span> buf[4];</div>
@@ -199,11 +199,16 @@ $(function() {
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">return</span> buf[1];</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aelevio_8h_html_a7784247f816e8beee3a0538f070d9357"><div class="ttname"><a href="elevio_8h.html#a7784247f816e8beee3a0538f070d9357">elevio_doorOpenLamp</a></div><div class="ttdeci">void elevio_doorOpenLamp(int value)</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00076">elevio.c:76</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a73cf5844bdae806dc8d0afa3e0edab70"><div class="ttname"><a href="elevio_8h.html#a73cf5844bdae806dc8d0afa3e0edab70">elevio_stopButton</a></div><div class="ttdeci">int elevio_stopButton(void)</div><div class="ttdoc">Checks if the emergency stop button has been pressed.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00112">elevio.c:112</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a7784247f816e8beee3a0538f070d9357"><div class="ttname"><a href="elevio_8h.html#a7784247f816e8beee3a0538f070d9357">elevio_doorOpenLamp</a></div><div class="ttdeci">void elevio_doorOpenLamp(int value)</div><div class="ttdoc">Sets door lamp to given value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00076">elevio.c:76</a></div></div>
 <div class="ttc" id="aelevio_8h_html"><div class="ttname"><a href="elevio_8h.html">elevio.h</a></div><div class="ttdoc">A library for defining the interface between the control logic and the pysical elevator.</div></div>
-<div class="ttc" id="aelevio_8h_html_a182079eb4c29f71ff3b5049a2fd082a3"><div class="ttname"><a href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a></div><div class="ttdeci">void elevio_buttonLamp(int floor, ButtonType button, int value)</div><div class="ttdoc">Sets lamp on a given floor and button to value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00054">elevio.c:54</a></div></div>
-<div class="ttc" id="aelevio_8h_html_a184a3b9bd68d9f38ada735288059b823"><div class="ttname"><a href="elevio_8h.html#a184a3b9bd68d9f38ada735288059b823">elevio_floorIndicator</a></div><div class="ttdeci">void elevio_floorIndicator(int floor)</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00066">elevio.c:66</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a6c30a3c0241ebf37a9014679e1bf288d"><div class="ttname"><a href="elevio_8h.html#a6c30a3c0241ebf37a9014679e1bf288d">elevio_floorSensor</a></div><div class="ttdeci">int elevio_floorSensor(void)</div><div class="ttdoc">Reads from the floor sensor and returns the position of the elevator.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00102">elevio.c:102</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a182079eb4c29f71ff3b5049a2fd082a3"><div class="ttname"><a href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a></div><div class="ttdeci">void elevio_buttonLamp(int floor, ButtonType button, int value)</div><div class="ttdoc">Sets lamp on a given floor and button to given value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00054">elevio.c:54</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a184a3b9bd68d9f38ada735288059b823"><div class="ttname"><a href="elevio_8h.html#a184a3b9bd68d9f38ada735288059b823">elevio_floorIndicator</a></div><div class="ttdeci">void elevio_floorIndicator(int floor)</div><div class="ttdoc">Turns on lamp at a given floor.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00066">elevio.c:66</a></div></div>
+<div class="ttc" id="aelevio_8h_html_ac0411a180087d6ac13a3d97eda809ba0"><div class="ttname"><a href="elevio_8h.html#ac0411a180087d6ac13a3d97eda809ba0">elevio_stopLamp</a></div><div class="ttdeci">void elevio_stopLamp(int value)</div><div class="ttdoc">Sets stop lamp to given value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00083">elevio.c:83</a></div></div>
 <div class="ttc" id="aelevio_8h_html_ab2e6dcf199387c1dd6f78e2bf6fff56e"><div class="ttname"><a href="elevio_8h.html#ab2e6dcf199387c1dd6f78e2bf6fff56e">elevio_motorDirection</a></div><div class="ttdeci">void elevio_motorDirection(MotorDirection dirn)</div><div class="ttdoc">Sets the motor to drive the elecator in a given direction.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00047">elevio.c:47</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a2485d7d293f03756a852ee1f796b9e1f"><div class="ttname"><a href="elevio_8h.html#a2485d7d293f03756a852ee1f796b9e1f">elevio_callButton</a></div><div class="ttdeci">int elevio_callButton(int floor, ButtonType button)</div><div class="ttdoc">Checks if a button has been pressed on a given floor.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00092">elevio.c:92</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a96c87bf2164a6aa64d116f6137b8ee78"><div class="ttname"><a href="elevio_8h.html#a96c87bf2164a6aa64d116f6137b8ee78">elevio_obstruction</a></div><div class="ttdeci">int elevio_obstruction(void)</div><div class="ttdoc">Checks if obstruction switch is activated.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00122">elevio.c:122</a></div></div>
 <div class="ttc" id="aelevio_8h_html_acec5e6d14134b881216887fe15aca830"><div class="ttname"><a href="elevio_8h.html#acec5e6d14134b881216887fe15aca830">elevio_init</a></div><div class="ttdeci">void elevio_init(void)</div><div class="ttdoc">Called to set up communication between the microcontroller used and the physical elevator.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00015">elevio.c:15</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

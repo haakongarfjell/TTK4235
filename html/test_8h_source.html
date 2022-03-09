@@ -86,7 +86,7 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> queue[4] = [0,1, 1,-1];</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// Hvis hele queuen er -1, stå stille. Hvis ikke kjør vanlig queuehandler.</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> leftShiftQueue(Button* queue);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> <a class="code" href="queue_8h.html#a8f1e96483b3db062bd9b82fcdeb17cde">leftShiftQueue</a>(Button* queue);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> passByFloor(); <span class="comment">// Sjekk om en etasje i mellom har requested i riktig retning.</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
@@ -94,19 +94,19 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">bool</span> checkStop(); <span class="comment">// Sjekk om stopknappen er trykket.</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// if (checkStop()) continue; Køen slettes</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> resetQueue();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="queue_8h.html#a4e6a7bdfbfedcdc60a28a34dd056010e">resetQueue</a>();</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> addToQueue(<span class="keywordtype">int</span> floor) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="queue_8h.html#a9a0a14a4ecdf21bd8b3237a84006a627">addToQueue</a>(<span class="keywordtype">int</span> floor) {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// if (floor &gt; 4 || floor &lt; 0) return;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    queue[3] = floor;   <span class="comment">// size-1</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordflow">while</span>(1) {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> (level.nextLevel == elevio_floorSensor()) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> (level.nextLevel == <a class="code" href="elevio_8h.html#a6c30a3c0241ebf37a9014679e1bf288d">elevio_floorSensor</a>()) {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="elevio_8h.html#ab2e6dcf199387c1dd6f78e2bf6fff56e">elevio_motorDirection</a>(DIRN_STOP);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        doorWait();</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// med mer</span></div>
@@ -137,11 +137,11 @@ $(function() {
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <a class="code" href="structButtonFloor.html">ButtonFloor</a>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">// Lage queue av ButtonFloor</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<a class="code" href="structButtonFloor.html">ButtonFloor</a> buttonCheck() {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<a class="code" href="structButtonFloor.html">ButtonFloor</a> <a class="code" href="queue_8h.html#a338c3357ac57361faf5bb398737e7495">buttonCheck</a>() {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordflow">for</span>(<span class="keywordtype">int</span> f = 0; f &lt; N_FLOORS; f++){</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> b = 0; b &lt; N_BUTTONS; b++){</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">int</span> btnPressed = elevio_callButton(f, b);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">int</span> btnPressed = <a class="code" href="elevio_8h.html#a2485d7d293f03756a852ee1f796b9e1f">elevio_callButton</a>(f, b);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (btnPressed == 1) {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <a class="code" href="structButtonFloor.html">ButtonFloor</a> tempButton;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            tempButton.button = b;</div>
@@ -156,7 +156,7 @@ $(function() {
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordflow">for</span>(<span class="keywordtype">int</span> f = 0; f &lt; N_FLOORS; f++){</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> b = 0; b &lt; N_BUTTONS; b++){</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">int</span> btnPressed = elevio_callButton(f, b);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">int</span> btnPressed = <a class="code" href="elevio_8h.html#a2485d7d293f03756a852ee1f796b9e1f">elevio_callButton</a>(f, b);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        printf(<span class="stringliteral">&quot;knapp: %d \n&quot;</span>,btnPressed);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a>(f, b, btnPressed);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
@@ -166,23 +166,23 @@ $(function() {
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> runStateMachine(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, State* state) {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    printf(<span class="stringliteral">&quot;Stopbutton: %d \n&quot;</span>, elevio_stopButton());</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    printf(<span class="stringliteral">&quot;Stopbutton: %d \n&quot;</span>, <a class="code" href="elevio_8h.html#a73cf5844bdae806dc8d0afa3e0edab70">elevio_stopButton</a>());</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (checkNoRequests(queue,size)) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="queue_8h.html#a1468f50893790ec6fddb80151ea5002d">checkNoRequests</a>(queue,size)) {</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        *state = IDLE;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">if</span> (elevio_stopButton()) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="elevio_8h.html#a73cf5844bdae806dc8d0afa3e0edab70">elevio_stopButton</a>()) {</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        *state = STOP;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    </div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="structRequest.html">Request</a> firstInQueue = *queue;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    ButtonType buttonType = firstInQueue.buttonType;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">int</span> floor = firstInQueue.floor;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">int</span> current_floor = elevio_floorSensor();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">int</span> current_floor = <a class="code" href="elevio_8h.html#a6c30a3c0241ebf37a9014679e1bf288d">elevio_floorSensor</a>();</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">if</span> (floor == -1 &amp;&amp; checkNoRequests(queue, size) == 0) {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        leftShiftQueue(queue, size);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">if</span> (floor == -1 &amp;&amp; <a class="code" href="queue_8h.html#a1468f50893790ec6fddb80151ea5002d">checkNoRequests</a>(queue, size) == 0) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="queue_8h.html#a8f1e96483b3db062bd9b82fcdeb17cde">leftShiftQueue</a>(queue, size);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
@@ -192,10 +192,10 @@ $(function() {
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        printf(<span class="stringliteral">&quot;You are now IDLE \n&quot;</span>);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="elevio_8h.html#ab2e6dcf199387c1dd6f78e2bf6fff56e">elevio_motorDirection</a>(DIRN_STOP);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        printf(<span class="stringliteral">&quot;Buttontype: %d \n&quot;</span>, buttonType);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        printf(<span class="stringliteral">&quot;CheckReq: %d \n&quot;</span>, checkNoRequests(queue,size));</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        printf(<span class="stringliteral">&quot;CheckReq: %d \n&quot;</span>, <a class="code" href="queue_8h.html#a1468f50893790ec6fddb80151ea5002d">checkNoRequests</a>(queue,size));</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">if</span> (checkNoRequests(queue,size)) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="queue_8h.html#a1468f50893790ec6fddb80151ea5002d">checkNoRequests</a>(queue,size)) {</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            *state = IDLE;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
@@ -233,10 +233,10 @@ $(function() {
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">case</span> STOP: {</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        printf(<span class="stringliteral">&quot;State : STOP \n&quot;</span>);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <a class="code" href="elevio_8h.html#ab2e6dcf199387c1dd6f78e2bf6fff56e">elevio_motorDirection</a>(DIRN_STOP);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        resetQueue(queue, size);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        elevio_stopLamp(1);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <a class="code" href="queue_8h.html#a4e6a7bdfbfedcdc60a28a34dd056010e">resetQueue</a>(queue, size);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <a class="code" href="elevio_8h.html#ac0411a180087d6ac13a3d97eda809ba0">elevio_stopLamp</a>(1);</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="comment">//printf(&quot;StopButton2 : %d&quot;, elevio_stopButton());</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">if</span> (elevio_stopButton()) {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="elevio_8h.html#a73cf5844bdae806dc8d0afa3e0edab70">elevio_stopButton</a>()) {</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">if</span> (current_floor == -1) {</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            }</div>
@@ -244,7 +244,7 @@ $(function() {
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        } </div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            elevio_stopLamp(0);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <a class="code" href="elevio_8h.html#ac0411a180087d6ac13a3d97eda809ba0">elevio_stopLamp</a>(0);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">if</span> (current_floor == -1) {</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                *state = IDLE;</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                doorClose();</div>
@@ -288,7 +288,7 @@ $(function() {
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <a class="code" href="elevio_8h.html#ab2e6dcf199387c1dd6f78e2bf6fff56e">elevio_motorDirection</a>(DIRN_STOP);</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        doorWait();     <span class="comment">// Evt. doorOpen()</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        leftShiftQueue(queue, size);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <a class="code" href="queue_8h.html#a8f1e96483b3db062bd9b82fcdeb17cde">leftShiftQueue</a>(queue, size);</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="comment">// leftshift</span></div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="comment">// dør greier</span></div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="comment">// sjekk queue[0]</span></div>
@@ -306,11 +306,20 @@ $(function() {
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aelevio_8h_html_a7784247f816e8beee3a0538f070d9357"><div class="ttname"><a href="elevio_8h.html#a7784247f816e8beee3a0538f070d9357">elevio_doorOpenLamp</a></div><div class="ttdeci">void elevio_doorOpenLamp(int value)</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00076">elevio.c:76</a></div></div>
+<div class="ttc" id="aqueue_8h_html_a4e6a7bdfbfedcdc60a28a34dd056010e"><div class="ttname"><a href="queue_8h.html#a4e6a7bdfbfedcdc60a28a34dd056010e">resetQueue</a></div><div class="ttdeci">void resetQueue(Request *queue_ptr, int size)</div><div class="ttdoc">Resets all the elements of the queue. All requests will have buttonType set to BUTTON_NONE and floor ...</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00058">queue.c:58</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a73cf5844bdae806dc8d0afa3e0edab70"><div class="ttname"><a href="elevio_8h.html#a73cf5844bdae806dc8d0afa3e0edab70">elevio_stopButton</a></div><div class="ttdeci">int elevio_stopButton(void)</div><div class="ttdoc">Checks if the emergency stop button has been pressed.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00112">elevio.c:112</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a7784247f816e8beee3a0538f070d9357"><div class="ttname"><a href="elevio_8h.html#a7784247f816e8beee3a0538f070d9357">elevio_doorOpenLamp</a></div><div class="ttdeci">void elevio_doorOpenLamp(int value)</div><div class="ttdoc">Sets door lamp to given value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00076">elevio.c:76</a></div></div>
+<div class="ttc" id="aqueue_8h_html_a1468f50893790ec6fddb80151ea5002d"><div class="ttname"><a href="queue_8h.html#a1468f50893790ec6fddb80151ea5002d">checkNoRequests</a></div><div class="ttdeci">bool checkNoRequests(Request *queue_ptr, int size)</div><div class="ttdoc">Checks if the queue is empty, if there are no requests.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00066">queue.c:66</a></div></div>
+<div class="ttc" id="aqueue_8h_html_a9a0a14a4ecdf21bd8b3237a84006a627"><div class="ttname"><a href="queue_8h.html#a9a0a14a4ecdf21bd8b3237a84006a627">addToQueue</a></div><div class="ttdeci">void addToQueue(Request *queue_ptr, Request element, int size)</div><div class="ttdoc">Adds an element to the back of the queue.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00046">queue.c:46</a></div></div>
+<div class="ttc" id="aqueue_8h_html_a338c3357ac57361faf5bb398737e7495"><div class="ttname"><a href="queue_8h.html#a338c3357ac57361faf5bb398737e7495">buttonCheck</a></div><div class="ttdeci">Request buttonCheck()</div><div class="ttdoc">Checks if a button has been pressed.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00003">queue.c:3</a></div></div>
 <div class="ttc" id="aelevio_8h_html"><div class="ttname"><a href="elevio_8h.html">elevio.h</a></div><div class="ttdoc">A library for defining the interface between the control logic and the pysical elevator.</div></div>
-<div class="ttc" id="astructRequest_html"><div class="ttname"><a href="structRequest.html">Request</a></div><div class="ttdef"><b>Definition:</b> <a href="queue_8h_source.html#l00006">queue.h:6</a></div></div>
-<div class="ttc" id="aelevio_8h_html_a182079eb4c29f71ff3b5049a2fd082a3"><div class="ttname"><a href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a></div><div class="ttdeci">void elevio_buttonLamp(int floor, ButtonType button, int value)</div><div class="ttdoc">Sets lamp on a given floor and button to value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00054">elevio.c:54</a></div></div>
+<div class="ttc" id="astructRequest_html"><div class="ttname"><a href="structRequest.html">Request</a></div><div class="ttdef"><b>Definition:</b> <a href="queue_8h_source.html#l00013">queue.h:13</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a6c30a3c0241ebf37a9014679e1bf288d"><div class="ttname"><a href="elevio_8h.html#a6c30a3c0241ebf37a9014679e1bf288d">elevio_floorSensor</a></div><div class="ttdeci">int elevio_floorSensor(void)</div><div class="ttdoc">Reads from the floor sensor and returns the position of the elevator.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00102">elevio.c:102</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a182079eb4c29f71ff3b5049a2fd082a3"><div class="ttname"><a href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a></div><div class="ttdeci">void elevio_buttonLamp(int floor, ButtonType button, int value)</div><div class="ttdoc">Sets lamp on a given floor and button to given value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00054">elevio.c:54</a></div></div>
+<div class="ttc" id="aqueue_8h_html_a8f1e96483b3db062bd9b82fcdeb17cde"><div class="ttname"><a href="queue_8h.html#a8f1e96483b3db062bd9b82fcdeb17cde">leftShiftQueue</a></div><div class="ttdeci">void leftShiftQueue(Request *queue_ptr, int size)</div><div class="ttdoc">Used to left shift the queue when a Request has been handled.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00022">queue.c:22</a></div></div>
+<div class="ttc" id="aelevio_8h_html_ac0411a180087d6ac13a3d97eda809ba0"><div class="ttname"><a href="elevio_8h.html#ac0411a180087d6ac13a3d97eda809ba0">elevio_stopLamp</a></div><div class="ttdeci">void elevio_stopLamp(int value)</div><div class="ttdoc">Sets stop lamp to given value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00083">elevio.c:83</a></div></div>
 <div class="ttc" id="aelevio_8h_html_ab2e6dcf199387c1dd6f78e2bf6fff56e"><div class="ttname"><a href="elevio_8h.html#ab2e6dcf199387c1dd6f78e2bf6fff56e">elevio_motorDirection</a></div><div class="ttdeci">void elevio_motorDirection(MotorDirection dirn)</div><div class="ttdoc">Sets the motor to drive the elecator in a given direction.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00047">elevio.c:47</a></div></div>
+<div class="ttc" id="aelevio_8h_html_a2485d7d293f03756a852ee1f796b9e1f"><div class="ttname"><a href="elevio_8h.html#a2485d7d293f03756a852ee1f796b9e1f">elevio_callButton</a></div><div class="ttdeci">int elevio_callButton(int floor, ButtonType button)</div><div class="ttdoc">Checks if a button has been pressed on a given floor.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00092">elevio.c:92</a></div></div>
 <div class="ttc" id="astructButtonFloor_html"><div class="ttname"><a href="structButtonFloor.html">ButtonFloor</a></div><div class="ttdef"><b>Definition:</b> <a href="test_8h_source.html#l00063">test.h:63</a></div></div>
 <div class="ttc" id="astructLevel_html"><div class="ttname"><a href="structLevel.html">Level</a></div><div class="ttdef"><b>Definition:</b> <a href="test_8h_source.html#l00007">test.h:7</a></div></div>
 <!-- start footer part -->

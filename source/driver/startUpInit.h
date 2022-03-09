@@ -3,5 +3,5 @@
 #include "con_load.h"
 #include "queue.h"
 
-void start_init();
+void startUpInit();
 

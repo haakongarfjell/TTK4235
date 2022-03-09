@@ -5,8 +5,8 @@
 #include "driver/elevio.h"
 
 #include "driver/queue.h"
-#include "driver/state_machine.h"
-#include "driver/utilities.h"
+#include "driver/fsm.h"
+#include "driver/startUpInit.h"
 
 
 int g_queue_size = 10;
@@ -18,11 +18,11 @@ int main(){
     Request queue[g_queue_size];
     resetQueue(&queue, g_queue_size);
 
-    State state= INIT;
-    
+    State state = INIT;
     int current_floor = 0;
     bool between_floors = false;
     Direction dir = DOWN;
+
     startInit();
 
     while(1){

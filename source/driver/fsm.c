@@ -1,4 +1,4 @@
-#include "state_machine.h"
+#include "fsm.h"
 
 void initHandler(Request* queue, int size, State* state) {
     elevio_doorOpenLamp(0); 
@@ -155,52 +155,7 @@ void runStateMachine(Request* queue, int size, State* state, int* current_floor,
             break;
         }
         case MOVE: {
-            int direction = floor-*current_floor;
-            bool req_way_cab = requestOnTheWay(queue, BUTTON_CAB, floor_sensor, size);   // Skal dette være en funksjonalitet
-            if (direction > 0) {
-                bool req_way = requestOnTheWay(queue, BUTTON_HALL_UP, floor_sensor, size);
-                if (req_way || req_way_cab) {
-                    removeFloorRequest(queue, size, *current_floor);
-                    *state = AT_FLOOR;
-                    break;  
-                }
-            }
-            if (direction < 0) {
-                bool req_way = requestOnTheWay(queue, BUTTON_HALL_DOWN, floor_sensor, size);
-                if (req_way || req_way_cab) {
-                    removeFloorRequest(queue, size, *current_floor);
-                    *state = AT_FLOOR;
-                    break;  
-                }
-            }
-            if (floor == *current_floor && *between_floors == false) {
-                removeFloorRequest(queue, size, *current_floor);
-                *state = AT_FLOOR;
-                break;
-            }
-            if (floor == *current_floor && *between_floors == true) {
-                if (floor_sensor == floor) {
-                    *between_floors = false;
-                }
-                if (*dir == UP) {
-                    elevio_motorDirection(DIRN_DOWN);
-
-                } else {
-                    elevio_motorDirection(DIRN_UP);
-
-                }
-                break;
-            }
-            if (floor < *current_floor && *between_floors == false) {
-                elevio_motorDirection(DIRN_DOWN);
-                *dir = DOWN;
-            } else {
-                elevio_motorDirection(DIRN_UP);
-                *dir = UP;
-            }
-            
-            *between_floors = false;
-            //moveHandler(queue, size, state, current_floor, floor, between_floors, dir);
+            moveHandler(queue, size, state, current_floor, floor, between_floors, dir);
             break;
         }
         case AT_FLOOR: {

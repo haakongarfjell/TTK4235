@@ -1,6 +1,6 @@
 #include "startUpInit.h"
 
-void startInit() {
+void starUptInit() {
     int current_floor;
     elevio_floorIndicator(0);
     while(1) {

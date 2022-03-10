@@ -69,35 +69,39 @@ $(function() {
 <div class="title">fsm.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="elevio_8h.html">elevio.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;con_load.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="queue_8h.html">queue.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;time.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    INIT = 0,</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    MOVE = 1,</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    AT_FLOOR = 2,</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    STOP = 3,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    DOOR = 4</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;} State;</div>
+<a href="fsm_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="elevio_8h.html">elevio.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;con_load.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="queue_8h.html">queue.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;time.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> runStateMachine(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, State* state, <span class="keywordtype">int</span>* current_floor, <span class="keywordtype">bool</span>* between_floors, Direction* dir);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> initHandler(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, State* state);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> atFloorHandler(<span class="keywordtype">int</span> current_floor, State* state);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> stopHandler(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, State* state, <span class="keywordtype">bool</span>* between_floors);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> doorHandler(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, State* state);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">void</span> moveHandler(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, State* state, <span class="keywordtype">int</span>* current_floor, <span class="keywordtype">int</span> floor, <span class="keywordtype">bool</span>* between_floors, Direction* dir);</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">   19</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    INIT = 0,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    MOVE = 1,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    AT_FLOOR = 2,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    STOP = 3,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    DOOR = 4</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;} <a class="code" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fsm_8h.html#aa6e4aa82eeeda3265a10f470d5741485">runStateMachine</a>(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, <a class="code" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a>* state, <span class="keywordtype">int</span>* current_floor, <span class="keywordtype">bool</span>* between_floors, Direction* dir);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> initHandler(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, <a class="code" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a>* state);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> atFloorHandler(<span class="keywordtype">int</span> current_floor, <a class="code" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a>* state);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> stopHandler(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, <a class="code" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a>* state, <span class="keywordtype">bool</span>* between_floors);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> doorHandler(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, <a class="code" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a>* state);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> moveHandler(<a class="code" href="structRequest.html">Request</a>* queue, <span class="keywordtype">int</span> size, <a class="code" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a>* state, <span class="keywordtype">int</span>* current_floor, <span class="keywordtype">int</span> floor, <span class="keywordtype">bool</span>* between_floors, Direction* dir);</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aelevio_8h_html"><div class="ttname"><a href="elevio_8h.html">elevio.h</a></div><div class="ttdoc">A library for defining the interface between the control logic and the pysical elevator.</div></div>
 <div class="ttc" id="astructRequest_html"><div class="ttname"><a href="structRequest.html">Request</a></div><div class="ttdef"><b>Definition:</b> <a href="queue_8h_source.html#l00013">queue.h:13</a></div></div>
 <div class="ttc" id="aqueue_8h_html"><div class="ttname"><a href="queue_8h.html">queue.h</a></div><div class="ttdoc">This is a library to create and operate on a queue, an array of requests. Most of the functions take ...</div></div>
+<div class="ttc" id="afsm_8h_html_aa6e4aa82eeeda3265a10f470d5741485"><div class="ttname"><a href="fsm_8h.html#aa6e4aa82eeeda3265a10f470d5741485">runStateMachine</a></div><div class="ttdeci">void runStateMachine(Request *queue, int size, State *state, int *current_floor, bool *between_floors, Direction *dir)</div><div class="ttdoc">A switch case that checks what state the elevator is at and calls the correct handler function.</div><div class="ttdef"><b>Definition:</b> <a href="fsm_8c_source.html#l00129">fsm.c:129</a></div></div>
+<div class="ttc" id="afsm_8h_html_a5d74787dedbc4e11c1ab15bf487e61f8"><div class="ttname"><a href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a></div><div class="ttdeci">State</div><div class="ttdoc">A struct defining all the states the elevator can be at.</div><div class="ttdef"><b>Definition:</b> <a href="fsm_8h_source.html#l00019">fsm.h:19</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

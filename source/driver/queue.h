@@ -1,8 +1,3 @@
-#pragma once
-#include "elevio.h"
-#include "con_load.h"
-#include <stdbool.h>
-
 /**
  * @file
  * @brief This is a library to create and operate on a queue, an
@@ -10,11 +5,25 @@
  * the first request in the queue and is used to operate on the elements of the queue.
  */
 
+#pragma once
+#include "elevio.h"
+#include "con_load.h"
+#include <stdbool.h>
+
+/**
+ * @brief A struct defining an elevator request. Contains the type of button pressed, and the floor
+ * it is pressed at.
+ * 
+ */
 typedef struct {
     ButtonType buttonType;
     int floor;
 } Request;       
 
+/**
+ * @brief An enum used to determine the direction the elevator is heading.
+ * 
+ */
 typedef enum {
     UP      = 0,
     DOWN    = 1

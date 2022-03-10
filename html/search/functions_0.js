@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['addtoqueue_31',['addToQueue',['../queue_8h.html#a9a0a14a4ecdf21bd8b3237a84006a627',1,'queue.c']]],
-  ['allqueuelightsoff_32',['allQueueLightsOff',['../queue_8h.html#a987f814b3294f5fb9754bcc69ebea9cd',1,'queue.c']]]
+  ['addtoqueue_38',['addToQueue',['../queue_8h.html#a9a0a14a4ecdf21bd8b3237a84006a627',1,'queue.c']]],
+  ['allqueuelightsoff_39',['allQueueLightsOff',['../queue_8h.html#a987f814b3294f5fb9754bcc69ebea9cd',1,'queue.c']]]
 ];

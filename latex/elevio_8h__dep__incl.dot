@@ -10,12 +10,12 @@ digraph "source/driver/elevio.h"
   Node3 [label="source/driver/queue.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$queue_8h.html",tooltip="This is a library to create and operate on a queue, an array of requests. Most of the functions take ..."];
   Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
-  Node4 [label="source/driver/fsm.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fsm_8h_source.html",tooltip=" "];
+  Node4 [label="source/driver/fsm.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fsm_8h.html",tooltip="The state machine is used for controlling the logic that operates the elevator. This library consists..."];
   Node4 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node5 [label="source/driver/fsm.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fsm_8c_source.html",tooltip=" "];
   Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
-  Node6 [label="source/driver/startUpInit.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$startUpInit_8h_source.html",tooltip=" "];
+  Node6 [label="source/driver/startUpInit.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$startUpInit_8h.html",tooltip="This module contains the function called to set up the elevator for transportation."];
   Node6 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
   Node7 [label="source/driver/startUpInit.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$startUpInit_8c_source.html",tooltip=" "];

@@ -23,7 +23,7 @@ int main(){
     bool between_floors = false;
     Direction dir = DOWN;
 
-    startInit();
+    startUpInit();
 
     while(1){
         queueLightsOn(&queue, g_queue_size);

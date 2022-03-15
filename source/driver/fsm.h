@@ -11,9 +11,17 @@
 #include "queue.h"
 #include "time.h"
 
+/**
+ * @brief An enum used to determine the direction the elevator is heading.
+ * 
+ */
+typedef enum {
+    UP      = 0,
+    DOWN    = 1
+} Direction;
 
 /**
- * @brief A struct defining all the states the elevator can be at.
+ * @brief A enum defining all the states the elevator can be at.
  * 
  */
 typedef enum {

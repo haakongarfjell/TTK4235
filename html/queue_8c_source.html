@@ -173,74 +173,62 @@ $(function() {
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordtype">int</span> numRequestsAtFloor(<a class="code" href="structRequest.html">Request</a>* queue_ptr, <span class="keywordtype">int</span> floor) {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">int</span> counter = 0;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++) {       <span class="comment">// maks 2 etterfølgende</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="structRequest.html">Request</a> req = *queue_ptr;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="comment">//printf(&quot;reqfloor %d \n&quot;, req.floor);</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span> (req.floor == floor) {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            counter++;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        queue_ptr++;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> counter;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="queue_8h.html#a48aadc038d17c5ea2e29cf0708823925">  107</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="queue_8h.html#a48aadc038d17c5ea2e29cf0708823925">queueLightsOn</a>(<a class="code" href="structRequest.html">Request</a>* queue_ptr, <span class="keywordtype">int</span> size) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="structRequest.html">Request</a> req = *queue_ptr;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">if</span> (req.floor != -1) {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <a class="code" href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a>(req.floor, req.buttonType, 1);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        } </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        queue_ptr++;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">// Må legges inn flere steder for å oppdateres ofte nok</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="queue_8h.html#a48aadc038d17c5ea2e29cf0708823925">  119</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="queue_8h.html#a48aadc038d17c5ea2e29cf0708823925">queueLightsOn</a>(<a class="code" href="structRequest.html">Request</a>* queue_ptr, <span class="keywordtype">int</span> size) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="structRequest.html">Request</a> req = *queue_ptr;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">if</span> (req.floor != -1) {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <a class="code" href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a>(req.floor, req.buttonType, 1);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        } </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="queue_8h.html#ac3a9d57b967f13f66a13b3ce9669609e">  118</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="queue_8h.html#ac3a9d57b967f13f66a13b3ce9669609e">removeFloorRequest</a>(<a class="code" href="structRequest.html">Request</a>* queue_ptr, <span class="keywordtype">int</span> size, <span class="keywordtype">int</span> floor) {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <a class="code" href="structRequest.html">Request</a> req = *queue_ptr;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">if</span> (req.floor == floor) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            (*queue_ptr).floor = -1;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            (*queue_ptr).buttonType = BUTTON_NONE;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        queue_ptr++;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="queue_8h.html#ac3a9d57b967f13f66a13b3ce9669609e">  130</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="queue_8h.html#ac3a9d57b967f13f66a13b3ce9669609e">removeFloorRequest</a>(<a class="code" href="structRequest.html">Request</a>* queue_ptr, <span class="keywordtype">int</span> size, <span class="keywordtype">int</span> floor) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="queue_8h.html#a5db215f7a6b628119ea8c7608ef3bb0d">  130</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="queue_8h.html#a5db215f7a6b628119ea8c7608ef3bb0d">requestOnTheWay</a>(<a class="code" href="structRequest.html">Request</a>* queue_ptr, ButtonType direction, <span class="keywordtype">int</span> floor, <span class="keywordtype">int</span> size) {</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="structRequest.html">Request</a> req = *queue_ptr;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span> (req.floor == floor) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            (*queue_ptr).floor = -1;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            (*queue_ptr).buttonType = BUTTON_NONE;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        queue_ptr++;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span> (req.floor == floor &amp;&amp; req.buttonType == direction) {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        queue_ptr++;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="queue_8h.html#a5db215f7a6b628119ea8c7608ef3bb0d">  142</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="queue_8h.html#a5db215f7a6b628119ea8c7608ef3bb0d">requestOnTheWay</a>(<a class="code" href="structRequest.html">Request</a>* queue_ptr, ButtonType direction, <span class="keywordtype">int</span> floor, <span class="keywordtype">int</span> size) {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <a class="code" href="structRequest.html">Request</a> req = *queue_ptr;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">if</span> (req.floor == floor &amp;&amp; req.buttonType == direction) {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        queue_ptr++;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="queue_8h.html#a987f814b3294f5fb9754bcc69ebea9cd">  154</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="queue_8h.html#a987f814b3294f5fb9754bcc69ebea9cd">allQueueLightsOff</a>() {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;   </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> f = 0; f &lt; N_FLOORS; f++){</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> b = 0; b &lt; N_BUTTONS; b++){</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <a class="code" href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a>(f, b, 0);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="queue_8h.html#a987f814b3294f5fb9754bcc69ebea9cd">  142</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="queue_8h.html#a987f814b3294f5fb9754bcc69ebea9cd">allQueueLightsOff</a>() {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;   </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> f = 0; f &lt; N_FLOORS; f++){</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> b = 0; b &lt; N_BUTTONS; b++){</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <a class="code" href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a>(f, b, 0);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aqueue_8h_html_a4e6a7bdfbfedcdc60a28a34dd056010e"><div class="ttname"><a href="queue_8h.html#a4e6a7bdfbfedcdc60a28a34dd056010e">resetQueue</a></div><div class="ttdeci">void resetQueue(Request *queue_ptr, int size)</div><div class="ttdoc">Resets all the elements of the queue. All requests will have buttonType set to BUTTON_NONE and floor ...</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00058">queue.c:58</a></div></div>
-<div class="ttc" id="aqueue_8h_html_a5db215f7a6b628119ea8c7608ef3bb0d"><div class="ttname"><a href="queue_8h.html#a5db215f7a6b628119ea8c7608ef3bb0d">requestOnTheWay</a></div><div class="ttdeci">bool requestOnTheWay(Request *queue_ptr, ButtonType direction, int floor, int size)</div><div class="ttdoc">Checks if there are any requests the elevator can pick up on in the current direction....</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00142">queue.c:142</a></div></div>
-<div class="ttc" id="aqueue_8h_html_a987f814b3294f5fb9754bcc69ebea9cd"><div class="ttname"><a href="queue_8h.html#a987f814b3294f5fb9754bcc69ebea9cd">allQueueLightsOff</a></div><div class="ttdeci">void allQueueLightsOff()</div><div class="ttdoc">Turns off all button lights.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00154">queue.c:154</a></div></div>
-<div class="ttc" id="aqueue_8h_html_ac3a9d57b967f13f66a13b3ce9669609e"><div class="ttname"><a href="queue_8h.html#ac3a9d57b967f13f66a13b3ce9669609e">removeFloorRequest</a></div><div class="ttdeci">void removeFloorRequest(Request *queue_ptr, int size, int floor)</div><div class="ttdoc">Removes all the requests on a given floor. All requests at this floor will have buttonType set to BUT...</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00130">queue.c:130</a></div></div>
+<div class="ttc" id="aqueue_8h_html_a5db215f7a6b628119ea8c7608ef3bb0d"><div class="ttname"><a href="queue_8h.html#a5db215f7a6b628119ea8c7608ef3bb0d">requestOnTheWay</a></div><div class="ttdeci">bool requestOnTheWay(Request *queue_ptr, ButtonType direction, int floor, int size)</div><div class="ttdoc">Checks if there are any requests the elevator can pick up on in the current direction....</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00130">queue.c:130</a></div></div>
+<div class="ttc" id="aqueue_8h_html_a987f814b3294f5fb9754bcc69ebea9cd"><div class="ttname"><a href="queue_8h.html#a987f814b3294f5fb9754bcc69ebea9cd">allQueueLightsOff</a></div><div class="ttdeci">void allQueueLightsOff()</div><div class="ttdoc">Turns off all button lights.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00142">queue.c:142</a></div></div>
+<div class="ttc" id="aqueue_8h_html_ac3a9d57b967f13f66a13b3ce9669609e"><div class="ttname"><a href="queue_8h.html#ac3a9d57b967f13f66a13b3ce9669609e">removeFloorRequest</a></div><div class="ttdeci">void removeFloorRequest(Request *queue_ptr, int size, int floor)</div><div class="ttdoc">Removes all the requests on a given floor. All requests at this floor will have buttonType set to BUT...</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00118">queue.c:118</a></div></div>
 <div class="ttc" id="aqueue_8h_html_a1468f50893790ec6fddb80151ea5002d"><div class="ttname"><a href="queue_8h.html#a1468f50893790ec6fddb80151ea5002d">checkNoRequests</a></div><div class="ttdeci">bool checkNoRequests(Request *queue_ptr, int size)</div><div class="ttdoc">Checks if the queue is empty, if there are no requests.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00066">queue.c:66</a></div></div>
 <div class="ttc" id="aqueue_8h_html_a9a0a14a4ecdf21bd8b3237a84006a627"><div class="ttname"><a href="queue_8h.html#a9a0a14a4ecdf21bd8b3237a84006a627">addToQueue</a></div><div class="ttdeci">void addToQueue(Request *queue_ptr, Request element, int size)</div><div class="ttdoc">Adds an element to the back of the queue.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00046">queue.c:46</a></div></div>
 <div class="ttc" id="aqueue_8h_html_a338c3357ac57361faf5bb398737e7495"><div class="ttname"><a href="queue_8h.html#a338c3357ac57361faf5bb398737e7495">buttonCheck</a></div><div class="ttdeci">Request buttonCheck()</div><div class="ttdoc">Checks if a button has been pressed.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00003">queue.c:3</a></div></div>
-<div class="ttc" id="astructRequest_html"><div class="ttname"><a href="structRequest.html">Request</a></div><div class="ttdef"><b>Definition:</b> <a href="queue_8h_source.html#l00013">queue.h:13</a></div></div>
+<div class="ttc" id="astructRequest_html"><div class="ttname"><a href="structRequest.html">Request</a></div><div class="ttdoc">A struct defining an elevator request. Contains the type of button pressed, and the floor it is press...</div><div class="ttdef"><b>Definition:</b> <a href="queue_8h_source.html#l00018">queue.h:18</a></div></div>
 <div class="ttc" id="aqueue_8h_html"><div class="ttname"><a href="queue_8h.html">queue.h</a></div><div class="ttdoc">This is a library to create and operate on a queue, an array of requests. Most of the functions take ...</div></div>
-<div class="ttc" id="aqueue_8h_html_a48aadc038d17c5ea2e29cf0708823925"><div class="ttname"><a href="queue_8h.html#a48aadc038d17c5ea2e29cf0708823925">queueLightsOn</a></div><div class="ttdeci">void queueLightsOn(Request *queue_ptr, int size)</div><div class="ttdoc">Turns on the button lamps of all of the requests in the queue.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00119">queue.c:119</a></div></div>
+<div class="ttc" id="aqueue_8h_html_a48aadc038d17c5ea2e29cf0708823925"><div class="ttname"><a href="queue_8h.html#a48aadc038d17c5ea2e29cf0708823925">queueLightsOn</a></div><div class="ttdeci">void queueLightsOn(Request *queue_ptr, int size)</div><div class="ttdoc">Turns on the button lamps of all of the requests in the queue.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00107">queue.c:107</a></div></div>
 <div class="ttc" id="aelevio_8h_html_a182079eb4c29f71ff3b5049a2fd082a3"><div class="ttname"><a href="elevio_8h.html#a182079eb4c29f71ff3b5049a2fd082a3">elevio_buttonLamp</a></div><div class="ttdeci">void elevio_buttonLamp(int floor, ButtonType button, int value)</div><div class="ttdoc">Sets lamp on a given floor and button to given value.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00054">elevio.c:54</a></div></div>
 <div class="ttc" id="aqueue_8h_html_a8f1e96483b3db062bd9b82fcdeb17cde"><div class="ttname"><a href="queue_8h.html#a8f1e96483b3db062bd9b82fcdeb17cde">leftShiftQueue</a></div><div class="ttdeci">void leftShiftQueue(Request *queue_ptr, int size)</div><div class="ttdoc">Used to left shift the queue when a Request has been handled.</div><div class="ttdef"><b>Definition:</b> <a href="queue_8c_source.html#l00022">queue.c:22</a></div></div>
 <div class="ttc" id="aelevio_8h_html_a2485d7d293f03756a852ee1f796b9e1f"><div class="ttname"><a href="elevio_8h.html#a2485d7d293f03756a852ee1f796b9e1f">elevio_callButton</a></div><div class="ttdeci">int elevio_callButton(int floor, ButtonType button)</div><div class="ttdoc">Checks if a button has been pressed on a given floor.</div><div class="ttdef"><b>Definition:</b> <a href="elevio_8c_source.html#l00092">elevio.c:92</a></div></div>

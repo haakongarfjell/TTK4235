@@ -9,13 +9,27 @@ The state machine is used for controlling the logic that operates the elevator. 
 {\ttfamily \#include \char`\"{}con\+\_\+load.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}time.\+h\char`\"{}}\newline
-Include dependency graph for fsm.\+h\+:
-% FIG 0
-This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+Include dependency graph for fsm.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fsm_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{fsm_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
+enum \mbox{\hyperlink{fsm_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \{ {\bfseries UP} = 0, 
+{\bfseries D\+O\+WN} = 1
+ \}
+\begin{DoxyCompactList}\small\item\em An enum used to determine the direction the elevator is heading. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} \{ \newline
 {\bfseries I\+N\+IT} = 0, 
 {\bfseries M\+O\+VE} = 1, 
@@ -24,27 +38,22 @@ enum \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} \{ \newl
 \newline
 {\bfseries D\+O\+OR} = 4
  \}
-\begin{DoxyCompactList}\small\item\em A struct defining all the states the elevator can be at. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A enum defining all the states the elevator can be at. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{fsm_8h_aa6e4aa82eeeda3265a10f470d5741485}{run\+State\+Machine}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue, int size, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state, int $\ast$current\+\_\+floor, bool $\ast$between\+\_\+floors, Direction $\ast$dir)
+void \mbox{\hyperlink{fsm_8h_aa6e4aa82eeeda3265a10f470d5741485}{run\+State\+Machine}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue, int size, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state, int $\ast$current\+\_\+floor, bool $\ast$between\+\_\+floors, \mbox{\hyperlink{fsm_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} $\ast$dir)
 \begin{DoxyCompactList}\small\item\em A switch case that checks what {\ttfamily state} the elevator is at and calls the correct handler function. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{fsm_8h_a481612c5876a219177116d046b151b34}\label{fsm_8h_a481612c5876a219177116d046b151b34}} 
-void {\bfseries init\+Handler} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue, int size, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state)
-\item 
-\mbox{\Hypertarget{fsm_8h_a7e9bb32fdb65de1fa0c00d4d1c68f092}\label{fsm_8h_a7e9bb32fdb65de1fa0c00d4d1c68f092}} 
-void {\bfseries at\+Floor\+Handler} (int current\+\_\+floor, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state)
-\item 
-\mbox{\Hypertarget{fsm_8h_a18771b3c066157f6e98295f838c8c833}\label{fsm_8h_a18771b3c066157f6e98295f838c8c833}} 
-void {\bfseries stop\+Handler} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue, int size, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state, bool $\ast$between\+\_\+floors)
-\item 
-\mbox{\Hypertarget{fsm_8h_a9a74c508412e10aef55f10891ed22656}\label{fsm_8h_a9a74c508412e10aef55f10891ed22656}} 
-void {\bfseries door\+Handler} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue, int size, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state)
-\item 
-\mbox{\Hypertarget{fsm_8h_a91d6ccc80f5b77ce6a4e156e07f4dafd}\label{fsm_8h_a91d6ccc80f5b77ce6a4e156e07f4dafd}} 
-void {\bfseries move\+Handler} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue, int size, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state, int $\ast$current\+\_\+floor, int floor, bool $\ast$between\+\_\+floors, Direction $\ast$dir)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{fsm_8h_a481612c5876a219177116d046b151b34}{init\+Handler}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue, int size, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Called when {\ttfamily state} is I\+N\+IT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm_8h_a7e9bb32fdb65de1fa0c00d4d1c68f092}{at\+Floor\+Handler}} (int current\+\_\+floor, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Called when {\ttfamily state} is A\+T\+\_\+\+F\+L\+O\+OR. The next {\ttfamily state} will always be set to D\+O\+OR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm_8h_a18771b3c066157f6e98295f838c8c833}{stop\+Handler}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue, int size, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state, bool $\ast$between\+\_\+floors)
+\begin{DoxyCompactList}\small\item\em Called when {\ttfamily state} is S\+T\+OP. The next {\ttfamily state} will be set to D\+O\+OR if the elevator is at a floor, otherwise it will be set to I\+N\+IT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm_8h_a9a74c508412e10aef55f10891ed22656}{door\+Handler}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue, int size, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Called when {\ttfamily state} is D\+O\+OR. The next {\ttfamily state} will always be set to I\+N\+IT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm_8h_a91d6ccc80f5b77ce6a4e156e07f4dafd}{move\+Handler}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue, int size, \mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$state, int $\ast$current\+\_\+floor, int floor, bool $\ast$between\+\_\+floors, \mbox{\hyperlink{fsm_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} $\ast$dir)
+\begin{DoxyCompactList}\small\item\em Called when {\ttfamily state} is M\+O\+VE. The next {\ttfamily state} will always be set to A\+T\+\_\+\+F\+L\+O\+OR. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -53,6 +62,20 @@ The state machine is used for controlling the logic that operates the elevator. 
 
 
 \doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{fsm_8h_a224b9163917ac32fc95a60d8c1eec3aa}\label{fsm_8h_a224b9163917ac32fc95a60d8c1eec3aa}} 
+\index{fsm.h@{fsm.h}!Direction@{Direction}}
+\index{Direction@{Direction}!fsm.h@{fsm.h}}
+\doxysubsubsection{\texorpdfstring{Direction}{Direction}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{fsm_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}
+
+
+
+An enum used to determine the direction the elevator is heading. 
+
+
+
+Definition at line 18 of file fsm.\+h.
+
 \mbox{\Hypertarget{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}\label{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}} 
 \index{fsm.h@{fsm.h}!State@{State}}
 \index{State@{State}!fsm.h@{fsm.h}}
@@ -61,20 +84,118 @@ The state machine is used for controlling the logic that operates the elevator. 
 
 
 
-A struct defining all the states the elevator can be at. 
+A enum defining all the states the elevator can be at. 
 
 
 
-Definition at line 19 of file fsm.\+h.
+Definition at line 27 of file fsm.\+h.
 
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{fsm_8h_a7e9bb32fdb65de1fa0c00d4d1c68f092}\label{fsm_8h_a7e9bb32fdb65de1fa0c00d4d1c68f092}} 
+\index{fsm.h@{fsm.h}!atFloorHandler@{atFloorHandler}}
+\index{atFloorHandler@{atFloorHandler}!fsm.h@{fsm.h}}
+\doxysubsubsection{\texorpdfstring{atFloorHandler()}{atFloorHandler()}}
+{\footnotesize\ttfamily void at\+Floor\+Handler (\begin{DoxyParamCaption}\item[{int}]{current\+\_\+floor,  }\item[{\mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Called when {\ttfamily state} is A\+T\+\_\+\+F\+L\+O\+OR. The next {\ttfamily state} will always be set to D\+O\+OR. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em current\+\_\+floor} & The floor the elevator is currently at. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em state} & A pointer to the current {\ttfamily state}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 10 of file fsm.\+c.
+
+\mbox{\Hypertarget{fsm_8h_a9a74c508412e10aef55f10891ed22656}\label{fsm_8h_a9a74c508412e10aef55f10891ed22656}} 
+\index{fsm.h@{fsm.h}!doorHandler@{doorHandler}}
+\index{doorHandler@{doorHandler}!fsm.h@{fsm.h}}
+\doxysubsubsection{\texorpdfstring{doorHandler()}{doorHandler()}}
+{\footnotesize\ttfamily void door\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue,  }\item[{int}]{size,  }\item[{\mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Called when {\ttfamily state} is D\+O\+OR. The next {\ttfamily state} will always be set to I\+N\+IT. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em queue} & A pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & The size of the queue. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em state} & A pointer to the current {\ttfamily state}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 50 of file fsm.\+c.
+
+\mbox{\Hypertarget{fsm_8h_a481612c5876a219177116d046b151b34}\label{fsm_8h_a481612c5876a219177116d046b151b34}} 
+\index{fsm.h@{fsm.h}!initHandler@{initHandler}}
+\index{initHandler@{initHandler}!fsm.h@{fsm.h}}
+\doxysubsubsection{\texorpdfstring{initHandler()}{initHandler()}}
+{\footnotesize\ttfamily void init\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue,  }\item[{int}]{size,  }\item[{\mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Called when {\ttfamily state} is I\+N\+IT. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em queue} & A pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & The size of the queue. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em state} & A pointer to the current {\ttfamily state}. {\ttfamily state} will be set to M\+O\+VE if there are requests in the queue. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 3 of file fsm.\+c.
+
+\mbox{\Hypertarget{fsm_8h_a91d6ccc80f5b77ce6a4e156e07f4dafd}\label{fsm_8h_a91d6ccc80f5b77ce6a4e156e07f4dafd}} 
+\index{fsm.h@{fsm.h}!moveHandler@{moveHandler}}
+\index{moveHandler@{moveHandler}!fsm.h@{fsm.h}}
+\doxysubsubsection{\texorpdfstring{moveHandler()}{moveHandler()}}
+{\footnotesize\ttfamily void move\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue,  }\item[{int}]{size,  }\item[{\mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$}]{state,  }\item[{int $\ast$}]{current\+\_\+floor,  }\item[{int}]{floor,  }\item[{bool $\ast$}]{between\+\_\+floors,  }\item[{\mbox{\hyperlink{fsm_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} $\ast$}]{dir }\end{DoxyParamCaption})}
+
+
+
+Called when {\ttfamily state} is M\+O\+VE. The next {\ttfamily state} will always be set to A\+T\+\_\+\+F\+L\+O\+OR. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em queue} & A pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & The size of the queue. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em state} & A pointer to the current state. \\
+\hline
+\mbox{\texttt{ in}}  & {\em current\+\_\+floor} & A pointer to the floor the elevator is currently at. \\
+\hline
+\mbox{\texttt{ in}}  & {\em floor} & Floor connected to the first request in the queue. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em between\+\_\+floors} & Checks if the elevator is between floors. Wil always be set to false. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em dir} & Sets the direction the elevator is moving in. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 80 of file fsm.\+c.
+
 \mbox{\Hypertarget{fsm_8h_aa6e4aa82eeeda3265a10f470d5741485}\label{fsm_8h_aa6e4aa82eeeda3265a10f470d5741485}} 
 \index{fsm.h@{fsm.h}!runStateMachine@{runStateMachine}}
 \index{runStateMachine@{runStateMachine}!fsm.h@{fsm.h}}
 \doxysubsubsection{\texorpdfstring{runStateMachine()}{runStateMachine()}}
-{\footnotesize\ttfamily void run\+State\+Machine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue,  }\item[{int}]{size,  }\item[{\mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$}]{state,  }\item[{int $\ast$}]{current\+\_\+floor,  }\item[{bool $\ast$}]{between\+\_\+floors,  }\item[{Direction $\ast$}]{dir }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void run\+State\+Machine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue,  }\item[{int}]{size,  }\item[{\mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$}]{state,  }\item[{int $\ast$}]{current\+\_\+floor,  }\item[{bool $\ast$}]{between\+\_\+floors,  }\item[{\mbox{\hyperlink{fsm_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} $\ast$}]{dir }\end{DoxyParamCaption})}
 
 
 
@@ -98,4 +219,29 @@ A switch case that checks what {\ttfamily state} the elevator is at and calls th
 
 
 Definition at line 129 of file fsm.\+c.
+
+\mbox{\Hypertarget{fsm_8h_a18771b3c066157f6e98295f838c8c833}\label{fsm_8h_a18771b3c066157f6e98295f838c8c833}} 
+\index{fsm.h@{fsm.h}!stopHandler@{stopHandler}}
+\index{stopHandler@{stopHandler}!fsm.h@{fsm.h}}
+\doxysubsubsection{\texorpdfstring{stopHandler()}{stopHandler()}}
+{\footnotesize\ttfamily void stop\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRequest}{Request}} $\ast$}]{queue,  }\item[{int}]{size,  }\item[{\mbox{\hyperlink{fsm_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} $\ast$}]{state,  }\item[{bool $\ast$}]{between\+\_\+floors }\end{DoxyParamCaption})}
+
+
+
+Called when {\ttfamily state} is S\+T\+OP. The next {\ttfamily state} will be set to D\+O\+OR if the elevator is at a floor, otherwise it will be set to I\+N\+IT. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em queue} & A pointer to the queue. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & The size of the queue. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em state} & A pointer to the current state \\
+\hline
+\mbox{\texttt{ out}}  & {\em between\+\_\+floors} & Set to true if the elevator is between floors. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 21 of file fsm.\+c.
 

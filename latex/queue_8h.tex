@@ -8,23 +8,25 @@ This is a library to create and operate on a queue, an array of requests. Most o
 {\ttfamily \#include \char`\"{}elevio.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}con\+\_\+load.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
-Include dependency graph for queue.\+h\+:
-% FIG 0
-This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+Include dependency graph for queue.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{queue_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structRequest}{Request}}
-\end{DoxyCompactItemize}
-\doxysubsection*{Enumerations}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{queue_8h_a224b9163917ac32fc95a60d8c1eec3aa}\label{queue_8h_a224b9163917ac32fc95a60d8c1eec3aa}} 
-enum {\bfseries Direction} \{ {\bfseries UP} = 0, 
-{\bfseries D\+O\+WN} = 1
- \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A struct defining an elevator request. Contains the type of button pressed, and the floor it is pressed at. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -45,9 +47,6 @@ void {\bfseries print\+Queue} (\mbox{\hyperlink{structRequest}{Request}} $\ast$q
 \item 
 void \mbox{\hyperlink{queue_8h_a87ff9cb7a1f23023f259f4c486c60cf7}{remove\+Duplicates}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int size)
 \begin{DoxyCompactList}\small\item\em Checks if the queue containes any dublicate requests, and removes all instances except one. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{queue_8h_a45e0ab4bcccbfb086fa36826c1e1f5ae}\label{queue_8h_a45e0ab4bcccbfb086fa36826c1e1f5ae}} 
-int {\bfseries num\+Requests\+At\+Floor} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int floor)
-\item 
 void \mbox{\hyperlink{queue_8h_a48aadc038d17c5ea2e29cf0708823925}{queue\+Lights\+On}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int size)
 \begin{DoxyCompactList}\small\item\em Turns on the button lamps of all of the requests in the queue. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{queue_8h_ac3a9d57b967f13f66a13b3ce9669609e}{remove\+Floor\+Request}} (\mbox{\hyperlink{structRequest}{Request}} $\ast$queue\+\_\+ptr, int size, int floor)
@@ -99,7 +98,7 @@ Turns off all button lights.
 
 
 
-Definition at line 154 of file queue.\+c.
+Definition at line 142 of file queue.\+c.
 
 \mbox{\Hypertarget{queue_8h_a338c3357ac57361faf5bb398737e7495}\label{queue_8h_a338c3357ac57361faf5bb398737e7495}} 
 \index{queue.h@{queue.h}!buttonCheck@{buttonCheck}}
@@ -212,7 +211,7 @@ Turns on the button lamps of all of the requests in the queue.
 \end{DoxyParams}
 
 
-Definition at line 119 of file queue.\+c.
+Definition at line 107 of file queue.\+c.
 
 \mbox{\Hypertarget{queue_8h_a87ff9cb7a1f23023f259f4c486c60cf7}\label{queue_8h_a87ff9cb7a1f23023f259f4c486c60cf7}} 
 \index{queue.h@{queue.h}!removeDuplicates@{removeDuplicates}}
@@ -256,7 +255,7 @@ Removes all the requests on a given {\ttfamily floor}. All requests at this {\tt
 \end{DoxyParams}
 
 
-Definition at line 130 of file queue.\+c.
+Definition at line 118 of file queue.\+c.
 
 \mbox{\Hypertarget{queue_8h_a5db215f7a6b628119ea8c7608ef3bb0d}\label{queue_8h_a5db215f7a6b628119ea8c7608ef3bb0d}} 
 \index{queue.h@{queue.h}!requestOnTheWay@{requestOnTheWay}}
@@ -286,7 +285,7 @@ false
 \end{DoxyReturn}
 
 
-Definition at line 142 of file queue.\+c.
+Definition at line 130 of file queue.\+c.
 
 \mbox{\Hypertarget{queue_8h_a4e6a7bdfbfedcdc60a28a34dd056010e}\label{queue_8h_a4e6a7bdfbfedcdc60a28a34dd056010e}} 
 \index{queue.h@{queue.h}!resetQueue@{resetQueue}}

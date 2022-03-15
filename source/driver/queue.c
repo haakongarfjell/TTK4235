@@ -102,20 +102,8 @@ void removeDuplicates(Request* queue_ptr, int size) {
 
 }
 
-int numRequestsAtFloor(Request* queue_ptr, int floor) {
-    int counter = 0;
-    for (int i = 0; i < 3; i++) {       // maks 2 etterfølgende
-        Request req = *queue_ptr;
-        //printf("reqfloor %d \n", req.floor);
-        if (req.floor == floor) {
-            counter++;
-        }
-        queue_ptr++;
-    }
-    return counter;
-}
 
-// Må legges inn flere steder for å oppdateres ofte nok
+
 void queueLightsOn(Request* queue_ptr, int size) {
     
     for (int i = 0; i < size; i++) {

@@ -67,7 +67,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">queue.h File Reference</div>  </div>
@@ -83,13 +82,29 @@ $(function() {
 Include dependency graph for queue.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="queue_8h__incl.png" border="0" usemap="#source_2driver_2queue_8h" alt=""/></div>
-<!-- MAP 0 -->
+<map name="source_2driver_2queue_8h" id="source_2driver_2queue_8h">
+<area shape="rect" title="This is a library to create and operate on a queue, an array of requests. Most of the functions take ..." alt="" coords="69,5,232,32"/>
+<area shape="rect" href="elevio_8h.html" title="A library for defining the interface between the control logic and the pysical elevator." alt="" coords="5,80,80,107"/>
+<area shape="rect" href="con__load_8h_source.html" title=" " alt="" coords="105,80,197,107"/>
+<area shape="rect" title=" " alt="" coords="221,80,304,107"/>
+<area shape="rect" title=" " alt="" coords="24,155,91,181"/>
+<area shape="rect" title=" " alt="" coords="115,155,186,181"/>
+<area shape="rect" title=" " alt="" coords="210,155,289,181"/>
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="queue_8h__dep__incl.png" border="0" usemap="#source_2driver_2queue_8hdep" alt=""/></div>
-<!-- MAP 1 -->
+<map name="source_2driver_2queue_8hdep" id="source_2driver_2queue_8hdep">
+<area shape="rect" title="This is a library to create and operate on a queue, an array of requests. Most of the functions take ..." alt="" coords="219,5,381,32"/>
+<area shape="rect" href="main_8c_source.html" title=" " alt="" coords="177,155,290,181"/>
+<area shape="rect" href="fsm_8h.html" title="The state machine is used for controlling the logic that operates the elevator. This library consists..." alt="" coords="47,80,195,107"/>
+<area shape="rect" href="startUpInit_8h.html" title="This module contains the function called to set up the elevator for transportation." alt="" coords="271,80,463,107"/>
+<area shape="rect" href="queue_8c_source.html" title=" " alt="" coords="487,80,649,107"/>
+<area shape="rect" href="fsm_8c_source.html" title=" " alt="" coords="5,155,152,181"/>
+<area shape="rect" href="startUpInit_8c_source.html" title=" " alt="" coords="314,155,505,181"/>
+</map>
 </div>
 </div>
 <p><a href="queue_8h_source.html">Go to the source code of this file.</a></p>
@@ -97,14 +112,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRequest.html">Request</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct defining an elevator request. Contains the type of button pressed, and the floor it is pressed at.  <a href="structRequest.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a224b9163917ac32fc95a60d8c1eec3aa"><td class="memItemLeft" align="right" valign="top"><a id="a224b9163917ac32fc95a60d8c1eec3aa"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Direction</b> { <b>UP</b> = 0, 
-<b>DOWN</b> = 1
- }</td></tr>
-<tr class="separator:a224b9163917ac32fc95a60d8c1eec3aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -112,7 +121,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a338c3357ac57361faf5bb398737e7495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a button has been pressed.  <a href="queue_8h.html#a338c3357ac57361faf5bb398737e7495">More...</a><br /></td></tr>
 <tr class="separator:a338c3357ac57361faf5bb398737e7495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f1e96483b3db062bd9b82fcdeb17cde"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a8f1e96483b3db062bd9b82fcdeb17cde">leftShiftQueue</a> (<a class="el" href="structRequest.html">Request</a> *queue_ptr, int size)</td></tr>
-<tr class="memdesc:a8f1e96483b3db062bd9b82fcdeb17cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to left shift the queue when a <a class="el" href="structRequest.html">Request</a> has been handled.  <a href="queue_8h.html#a8f1e96483b3db062bd9b82fcdeb17cde">More...</a><br /></td></tr>
+<tr class="memdesc:a8f1e96483b3db062bd9b82fcdeb17cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to left shift the queue when a <a class="el" href="structRequest.html" title="A struct defining an elevator request. Contains the type of button pressed, and the floor it is press...">Request</a> has been handled.  <a href="queue_8h.html#a8f1e96483b3db062bd9b82fcdeb17cde">More...</a><br /></td></tr>
 <tr class="separator:a8f1e96483b3db062bd9b82fcdeb17cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa239b24bc481b306c37a270e266a204"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#aaa239b24bc481b306c37a270e266a204">checkIfInQueue</a> (<a class="el" href="structRequest.html">Request</a> *queue_ptr, <a class="el" href="structRequest.html">Request</a> element, int size)</td></tr>
 <tr class="memdesc:aaa239b24bc481b306c37a270e266a204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an <code>element</code> of is in the queue.  <a href="queue_8h.html#aaa239b24bc481b306c37a270e266a204">More...</a><br /></td></tr>
@@ -132,9 +141,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printQueue</b> (<a cl
 <tr class="memitem:a87ff9cb7a1f23023f259f4c486c60cf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a87ff9cb7a1f23023f259f4c486c60cf7">removeDuplicates</a> (<a class="el" href="structRequest.html">Request</a> *queue_ptr, int size)</td></tr>
 <tr class="memdesc:a87ff9cb7a1f23023f259f4c486c60cf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the queue containes any dublicate requests, and removes all instances except one.  <a href="queue_8h.html#a87ff9cb7a1f23023f259f4c486c60cf7">More...</a><br /></td></tr>
 <tr class="separator:a87ff9cb7a1f23023f259f4c486c60cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45e0ab4bcccbfb086fa36826c1e1f5ae"><td class="memItemLeft" align="right" valign="top"><a id="a45e0ab4bcccbfb086fa36826c1e1f5ae"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>numRequestsAtFloor</b> (<a class="el" href="structRequest.html">Request</a> *queue_ptr, int floor)</td></tr>
-<tr class="separator:a45e0ab4bcccbfb086fa36826c1e1f5ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48aadc038d17c5ea2e29cf0708823925"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a48aadc038d17c5ea2e29cf0708823925">queueLightsOn</a> (<a class="el" href="structRequest.html">Request</a> *queue_ptr, int size)</td></tr>
 <tr class="memdesc:a48aadc038d17c5ea2e29cf0708823925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns on the button lamps of all of the requests in the queue.  <a href="queue_8h.html#a48aadc038d17c5ea2e29cf0708823925">More...</a><br /></td></tr>
 <tr class="separator:a48aadc038d17c5ea2e29cf0708823925"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,7 +222,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numRequestsAtFloor</b>
 
 <p>Turns off all button lights. </p>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00154">154</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00142">142</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -236,7 +242,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numRequestsAtFloor</b>
 </div><div class="memdoc">
 
 <p>Checks if a button has been pressed. </p>
-<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="structRequest.html">Request</a> with buttonType and floor as member variables. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="structRequest.html" title="A struct defining an elevator request. Contains the type of button pressed, and the floor it is press...">Request</a> with buttonType and floor as member variables. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00003">3</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
@@ -359,7 +365,7 @@ false otherwise. </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Used to left shift the queue when a <a class="el" href="structRequest.html">Request</a> has been handled. </p>
+<p>Used to left shift the queue when a <a class="el" href="structRequest.html" title="A struct defining an elevator request. Contains the type of button pressed, and the floor it is press...">Request</a> has been handled. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">queue_ptr</td><td>Pointer to the queue. </td></tr>
@@ -407,7 +413,7 @@ false otherwise. </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00119">119</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00107">107</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -492,7 +498,7 @@ false otherwise. </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00130">130</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00118">118</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -548,7 +554,7 @@ false otherwise. </dd></dl>
 <dd>
 false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00142">142</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="queue_8c_source.html#l00130">130</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>

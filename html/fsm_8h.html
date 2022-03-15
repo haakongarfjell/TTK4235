@@ -83,19 +83,38 @@ $(function() {
 Include dependency graph for fsm.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="fsm_8h__incl.png" border="0" usemap="#source_2driver_2fsm_8h" alt=""/></div>
-<!-- MAP 0 -->
+<map name="source_2driver_2fsm_8h" id="source_2driver_2fsm_8h">
+<area shape="rect" title="The state machine is used for controlling the logic that operates the elevator. This library consists..." alt="" coords="109,5,257,32"/>
+<area shape="rect" href="elevio_8h.html" title="A library for defining the interface between the control logic and the pysical elevator." alt="" coords="5,155,80,181"/>
+<area shape="rect" href="con__load_8h_source.html" title=" " alt="" coords="211,155,303,181"/>
+<area shape="rect" href="queue_8h.html" title="This is a library to create and operate on a queue, an array of requests. Most of the functions take ..." alt="" coords="108,80,183,107"/>
+<area shape="rect" title=" " alt="" coords="257,80,321,107"/>
+<area shape="rect" title=" " alt="" coords="131,229,197,256"/>
+<area shape="rect" title=" " alt="" coords="222,229,293,256"/>
+<area shape="rect" title=" " alt="" coords="317,229,395,256"/>
+<area shape="rect" title=" " alt="" coords="104,155,187,181"/>
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="fsm_8h__dep__incl.png" border="0" usemap="#source_2driver_2fsm_8hdep" alt=""/></div>
-<!-- MAP 1 -->
+<map name="source_2driver_2fsm_8hdep" id="source_2driver_2fsm_8hdep">
+<area shape="rect" title="The state machine is used for controlling the logic that operates the elevator. This library consists..." alt="" coords="65,5,213,32"/>
+<area shape="rect" href="main_8c_source.html" title=" " alt="" coords="5,80,119,107"/>
+<area shape="rect" href="fsm_8c_source.html" title=" " alt="" coords="143,80,290,107"/>
+</map>
 </div>
 </div>
 <p><a href="fsm_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a224b9163917ac32fc95a60d8c1eec3aa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> { <b>UP</b> = 0, 
+<b>DOWN</b> = 1
+ }</td></tr>
+<tr class="memdesc:a224b9163917ac32fc95a60d8c1eec3aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum used to determine the direction the elevator is heading.  <a href="fsm_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">More...</a><br /></td></tr>
+<tr class="separator:a224b9163917ac32fc95a60d8c1eec3aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d74787dedbc4e11c1ab15bf487e61f8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> { <br />
 &#160;&#160;<b>INIT</b> = 0, 
 <b>MOVE</b> = 1, 
@@ -105,28 +124,28 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>DOOR</b> = 4
 <br />
  }</td></tr>
-<tr class="memdesc:a5d74787dedbc4e11c1ab15bf487e61f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct defining all the states the elevator can be at.  <a href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">More...</a><br /></td></tr>
+<tr class="memdesc:a5d74787dedbc4e11c1ab15bf487e61f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A enum defining all the states the elevator can be at.  <a href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">More...</a><br /></td></tr>
 <tr class="separator:a5d74787dedbc4e11c1ab15bf487e61f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa6e4aa82eeeda3265a10f470d5741485"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#aa6e4aa82eeeda3265a10f470d5741485">runStateMachine</a> (<a class="el" href="structRequest.html">Request</a> *queue, int size, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state, int *current_floor, bool *between_floors, Direction *dir)</td></tr>
+<tr class="memitem:aa6e4aa82eeeda3265a10f470d5741485"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#aa6e4aa82eeeda3265a10f470d5741485">runStateMachine</a> (<a class="el" href="structRequest.html">Request</a> *queue, int size, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state, int *current_floor, bool *between_floors, <a class="el" href="fsm_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> *dir)</td></tr>
 <tr class="memdesc:aa6e4aa82eeeda3265a10f470d5741485"><td class="mdescLeft">&#160;</td><td class="mdescRight">A switch case that checks what <code>state</code> the elevator is at and calls the correct handler function.  <a href="fsm_8h.html#aa6e4aa82eeeda3265a10f470d5741485">More...</a><br /></td></tr>
 <tr class="separator:aa6e4aa82eeeda3265a10f470d5741485"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a481612c5876a219177116d046b151b34"><td class="memItemLeft" align="right" valign="top"><a id="a481612c5876a219177116d046b151b34"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initHandler</b> (<a class="el" href="structRequest.html">Request</a> *queue, int size, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state)</td></tr>
+<tr class="memitem:a481612c5876a219177116d046b151b34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a481612c5876a219177116d046b151b34">initHandler</a> (<a class="el" href="structRequest.html">Request</a> *queue, int size, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state)</td></tr>
+<tr class="memdesc:a481612c5876a219177116d046b151b34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when <code>state</code> is INIT.  <a href="fsm_8h.html#a481612c5876a219177116d046b151b34">More...</a><br /></td></tr>
 <tr class="separator:a481612c5876a219177116d046b151b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e9bb32fdb65de1fa0c00d4d1c68f092"><td class="memItemLeft" align="right" valign="top"><a id="a7e9bb32fdb65de1fa0c00d4d1c68f092"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>atFloorHandler</b> (int current_floor, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state)</td></tr>
+<tr class="memitem:a7e9bb32fdb65de1fa0c00d4d1c68f092"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a7e9bb32fdb65de1fa0c00d4d1c68f092">atFloorHandler</a> (int current_floor, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state)</td></tr>
+<tr class="memdesc:a7e9bb32fdb65de1fa0c00d4d1c68f092"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when <code>state</code> is AT_FLOOR. The next <code>state</code> will always be set to DOOR.  <a href="fsm_8h.html#a7e9bb32fdb65de1fa0c00d4d1c68f092">More...</a><br /></td></tr>
 <tr class="separator:a7e9bb32fdb65de1fa0c00d4d1c68f092"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18771b3c066157f6e98295f838c8c833"><td class="memItemLeft" align="right" valign="top"><a id="a18771b3c066157f6e98295f838c8c833"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stopHandler</b> (<a class="el" href="structRequest.html">Request</a> *queue, int size, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state, bool *between_floors)</td></tr>
+<tr class="memitem:a18771b3c066157f6e98295f838c8c833"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a18771b3c066157f6e98295f838c8c833">stopHandler</a> (<a class="el" href="structRequest.html">Request</a> *queue, int size, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state, bool *between_floors)</td></tr>
+<tr class="memdesc:a18771b3c066157f6e98295f838c8c833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when <code>state</code> is STOP. The next <code>state</code> will be set to DOOR if the elevator is at a floor, otherwise it will be set to INIT.  <a href="fsm_8h.html#a18771b3c066157f6e98295f838c8c833">More...</a><br /></td></tr>
 <tr class="separator:a18771b3c066157f6e98295f838c8c833"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a74c508412e10aef55f10891ed22656"><td class="memItemLeft" align="right" valign="top"><a id="a9a74c508412e10aef55f10891ed22656"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>doorHandler</b> (<a class="el" href="structRequest.html">Request</a> *queue, int size, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state)</td></tr>
+<tr class="memitem:a9a74c508412e10aef55f10891ed22656"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a9a74c508412e10aef55f10891ed22656">doorHandler</a> (<a class="el" href="structRequest.html">Request</a> *queue, int size, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state)</td></tr>
+<tr class="memdesc:a9a74c508412e10aef55f10891ed22656"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when <code>state</code> is DOOR. The next <code>state</code> will always be set to INIT.  <a href="fsm_8h.html#a9a74c508412e10aef55f10891ed22656">More...</a><br /></td></tr>
 <tr class="separator:a9a74c508412e10aef55f10891ed22656"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91d6ccc80f5b77ce6a4e156e07f4dafd"><td class="memItemLeft" align="right" valign="top"><a id="a91d6ccc80f5b77ce6a4e156e07f4dafd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>moveHandler</b> (<a class="el" href="structRequest.html">Request</a> *queue, int size, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state, int *current_floor, int floor, bool *between_floors, Direction *dir)</td></tr>
+<tr class="memitem:a91d6ccc80f5b77ce6a4e156e07f4dafd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm_8h.html#a91d6ccc80f5b77ce6a4e156e07f4dafd">moveHandler</a> (<a class="el" href="structRequest.html">Request</a> *queue, int size, <a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *state, int *current_floor, int floor, bool *between_floors, <a class="el" href="fsm_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> *dir)</td></tr>
+<tr class="memdesc:a91d6ccc80f5b77ce6a4e156e07f4dafd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when <code>state</code> is MOVE. The next <code>state</code> will always be set to AT_FLOOR.  <a href="fsm_8h.html#a91d6ccc80f5b77ce6a4e156e07f4dafd">More...</a><br /></td></tr>
 <tr class="separator:a91d6ccc80f5b77ce6a4e156e07f4dafd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -134,6 +153,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>moveHandler</b> (<a c
 
 <p class="definition">Definition in file <a class="el" href="fsm_8h_source.html">fsm.h</a>.</p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a224b9163917ac32fc95a60d8c1eec3aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a224b9163917ac32fc95a60d8c1eec3aa">&#9670;&nbsp;</a></span>Direction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="fsm_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>An enum used to determine the direction the elevator is heading. </p>
+
+<p class="definition">Definition at line <a class="el" href="fsm_8h_source.html#l00018">18</a> of file <a class="el" href="fsm_8h_source.html">fsm.h</a>.</p>
+
+</div>
+</div>
 <a id="a5d74787dedbc4e11c1ab15bf487e61f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d74787dedbc4e11c1ab15bf487e61f8">&#9670;&nbsp;</a></span>State</h2>
 
@@ -146,13 +183,218 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>moveHandler</b> (<a c
       </table>
 </div><div class="memdoc">
 
-<p>A struct defining all the states the elevator can be at. </p>
+<p>A enum defining all the states the elevator can be at. </p>
 
-<p class="definition">Definition at line <a class="el" href="fsm_8h_source.html#l00019">19</a> of file <a class="el" href="fsm_8h_source.html">fsm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="fsm_8h_source.html#l00027">27</a> of file <a class="el" href="fsm_8h_source.html">fsm.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a7e9bb32fdb65de1fa0c00d4d1c68f092"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e9bb32fdb65de1fa0c00d4d1c68f092">&#9670;&nbsp;</a></span>atFloorHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void atFloorHandler </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>current_floor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Called when <code>state</code> is AT_FLOOR. The next <code>state</code> will always be set to DOOR. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">current_floor</td><td>The floor the elevator is currently at. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">state</td><td>A pointer to the current <code>state</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="fsm_8c_source.html#l00010">10</a> of file <a class="el" href="fsm_8c_source.html">fsm.c</a>.</p>
+
+</div>
+</div>
+<a id="a9a74c508412e10aef55f10891ed22656"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a74c508412e10aef55f10891ed22656">&#9670;&nbsp;</a></span>doorHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void doorHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structRequest.html">Request</a> *&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Called when <code>state</code> is DOOR. The next <code>state</code> will always be set to INIT. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">queue</td><td>A pointer to the queue. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The size of the queue. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">state</td><td>A pointer to the current <code>state</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="fsm_8c_source.html#l00050">50</a> of file <a class="el" href="fsm_8c_source.html">fsm.c</a>.</p>
+
+</div>
+</div>
+<a id="a481612c5876a219177116d046b151b34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a481612c5876a219177116d046b151b34">&#9670;&nbsp;</a></span>initHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structRequest.html">Request</a> *&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Called when <code>state</code> is INIT. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">queue</td><td>A pointer to the queue. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The size of the queue. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">state</td><td>A pointer to the current <code>state</code>. <code>state</code> will be set to MOVE if there are requests in the queue. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="fsm_8c_source.html#l00003">3</a> of file <a class="el" href="fsm_8c_source.html">fsm.c</a>.</p>
+
+</div>
+</div>
+<a id="a91d6ccc80f5b77ce6a4e156e07f4dafd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91d6ccc80f5b77ce6a4e156e07f4dafd">&#9670;&nbsp;</a></span>moveHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void moveHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structRequest.html">Request</a> *&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>current_floor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>floor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>between_floors</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> *&#160;</td>
+          <td class="paramname"><em>dir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Called when <code>state</code> is MOVE. The next <code>state</code> will always be set to AT_FLOOR. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">queue</td><td>A pointer to the queue. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The size of the queue. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">state</td><td>A pointer to the current state. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">current_floor</td><td>A pointer to the floor the elevator is currently at. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>Floor connected to the first request in the queue. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">between_floors</td><td>Checks if the elevator is between floors. Wil always be set to false. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">dir</td><td>Sets the direction the elevator is moving in. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="fsm_8c_source.html#l00080">80</a> of file <a class="el" href="fsm_8c_source.html">fsm.c</a>.</p>
+
+</div>
+</div>
 <a id="aa6e4aa82eeeda3265a10f470d5741485"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa6e4aa82eeeda3265a10f470d5741485">&#9670;&nbsp;</a></span>runStateMachine()</h2>
 
@@ -192,7 +434,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>moveHandler</b> (<a c
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Direction *&#160;</td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> *&#160;</td>
           <td class="paramname"><em>dir</em>&#160;</td>
         </tr>
         <tr>
@@ -217,6 +459,59 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>moveHandler</b> (<a c
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="fsm_8c_source.html#l00129">129</a> of file <a class="el" href="fsm_8c_source.html">fsm.c</a>.</p>
+
+</div>
+</div>
+<a id="a18771b3c066157f6e98295f838c8c833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18771b3c066157f6e98295f838c8c833">&#9670;&nbsp;</a></span>stopHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stopHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structRequest.html">Request</a> *&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fsm_8h.html#a5d74787dedbc4e11c1ab15bf487e61f8">State</a> *&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>between_floors</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Called when <code>state</code> is STOP. The next <code>state</code> will be set to DOOR if the elevator is at a floor, otherwise it will be set to INIT. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">queue</td><td>A pointer to the queue. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The size of the queue. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">state</td><td>A pointer to the current state </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">between_floors</td><td>Set to true if the elevator is between floors. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="fsm_8c_source.html#l00021">21</a> of file <a class="el" href="fsm_8c_source.html">fsm.c</a>.</p>
 
 </div>
 </div>

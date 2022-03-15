@@ -20,14 +20,7 @@ typedef struct {
     int floor;
 } Request;       
 
-/**
- * @brief An enum used to determine the direction the elevator is heading.
- * 
- */
-typedef enum {
-    UP      = 0,
-    DOWN    = 1
-} Direction;
+
 
 /**
  * @brief Checks if a button has been pressed.
@@ -98,7 +91,6 @@ void printQueue(Request* queue_ptr, int size);  // Fjernes?
 void removeDuplicates(Request* queue_ptr, int size);
 
 
-int numRequestsAtFloor(Request* queue_ptr, int floor);  // Fjernes?
 
 /**
  * @brief Turns on the button lamps of all of the requests in the queue.

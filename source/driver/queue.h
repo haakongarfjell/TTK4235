@@ -39,7 +39,7 @@ Request buttonCheck();
 void leftShiftQueue(Request* queue_ptr, int size);
 
 /**
- * @brief Checks if an @p element of is in the queue.
+ * @brief Checks if an @p element of type Request is in the queue.
  * 
  * @param[in] queue_ptr         Pointer to the queue.
  * @param[in] element           Element to check if is in the queue.
@@ -68,7 +68,7 @@ void addToQueue(Request* queue_ptr, Request element, int size);
 void resetQueue(Request* queue_ptr, int size);
 
 /**
- * @brief Checks if the queue is empty, if there are no requests.
+ * @brief Checks if the queue is empty.
  * 
  * @param[in] queue_ptr         Pointer to the queue.
  * @param[in] size              Size of the queue.
@@ -77,13 +77,17 @@ void resetQueue(Request* queue_ptr, int size);
  */
 bool checkNoRequests(Request* queue_ptr, int size);
 
-
-void printQueue(Request* queue_ptr, int size);  // Fjernes?
-
+/**
+ * @brief Prints an overview of all the elements in the queue.
+ * 
+ * @param[in] queue_ptr     Pointer to the queue.
+ * @param[in] size          Size of the queue.
+ */
+void printQueue(Request* queue_ptr, int size);
 
 /**
  * @brief Checks if the queue containes any dublicate requests, and
- * removes all instances except one.
+ * removes all instances except for one.
  * 
  * @param[in,out] queue_ptr     Pointer to the queue.
  * @param[in] size              Size of the queue.
@@ -129,4 +133,4 @@ bool requestOnTheWay(Request* queue_ptr, ButtonType direction, int floor, int si
  * @brief Turns off all button lights.
  * 
  */
-void allQueueLightsOff();   // Endre til buttonLightsOff?
+void allQueueLightsOff();

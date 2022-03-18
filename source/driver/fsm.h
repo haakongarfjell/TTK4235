@@ -2,7 +2,7 @@
  * @file
  * @brief The state machine is used for controlling the logic that 
  * operates the elevator. This library consists of all handler functions 
- * handles the logical control at each state.
+ * that handles the logical control at each state.
  */
 
 #pragma once
